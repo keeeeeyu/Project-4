@@ -24,7 +24,7 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/covidTracker" element={<CovidTrackerPage />} />
+        <Route path="/covidTracker" element={<CovidTrackerPage handleLogout={handleLogout}/>} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}

@@ -1,11 +1,11 @@
+import Header from '../../components/Header/Header'
 
 
 
-
-export default function covidTrackerPage() {
+export default function covidTrackerPage({handleLogout}) {
     return (
         <>
-            <h1>this is covid tracker page</h1>
+        <Header handleLogout={handleLogout}/>
         </>
     )
 }
