@@ -36,7 +36,7 @@ export default function LoginPage(props) {
       await userService.login(state);
       // Route to wherever you want!
       props.handleSignUpOrLogin();
-      navigate("/");
+      navigate("/covidTracker");
     } catch (err) {
       // Invalid user data (probably duplicate email)
       setError(err.message);
@@ -51,8 +51,8 @@ export default function LoginPage(props) {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="teal" textAlign="center">
-            <Image src="https://i.imgur.com/s4LrnlU.png" /> Log-in to your
+          <Header as="h2" color="red" textAlign="center">
+            Log-in to your
             account
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ export default function LoginPage(props) {
                 required
               />
               <Button
-                color="teal"
+                color="red"
                 fluid
                 size="large"
                 type="submit"
