@@ -10,6 +10,7 @@ import AfricaPage from "../AfricaPage/AfricaPage"
 import AsiaPage from "../AsiaPage/AsiaPage"
 import EuropePage from "../EuropePage/EuropePage";
 import NorthAmericaPage from "../NorthAmericaPage/NorthAmericaPage";
+import OceaniaPage from "../OceaniaPage/OceaniaPage"
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -47,7 +48,8 @@ function App() {
         <Route path="/africa" element={<AfricaPage />} />
         <Route path="/asia" element={<AsiaPage />} />
         <Route path="/europe" element={<EuropePage />} />
-        <Route path="/northamerica" element={<NorthAmericaPage />} />
+        <Route path="/north-america" element={<NorthAmericaPage />} />
+        <Route path="/australia-oceania" element={<OceaniaPage />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
