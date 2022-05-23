@@ -15,10 +15,12 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
         <Grid textAlign='center' columns={3}>
             <Grid.Row>
                 <Grid.Column>
-                    <Link to="/africa">
+                    
                     <Card>
                         <Card.Content>
-                            <Image src="https://i.imgur.com/wt9gbQ0.jpg"></Image>
+                            <Link to="/africa">
+                                <Image src="https://i.imgur.com/wt9gbQ0.jpg"></Image>
+                            </Link>
                             <Segment>Africa</Segment>
                             <Segment>
                                 Total Cases: {continent[5].cases}<br/>
@@ -31,12 +33,14 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             <i class="eye icon"></i>
                         </Card.Content>
                     </Card>
-                    </Link>
+                    
                 </Grid.Column>
                 <Grid.Column>
                     <Card>
                         <Card.Content>
-                            <Image src="https://i.imgur.com/AJutcNz.jpg"></Image>
+                            <Link to="/asia">
+                                <Image src="https://i.imgur.com/AJutcNz.jpg"></Image>
+                            </Link>
                             <Segment>Asia</Segment>
                             <Segment>
                                 Total Cases: {continent[1].cases}<br/>

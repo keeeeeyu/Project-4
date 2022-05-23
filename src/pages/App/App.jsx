@@ -7,6 +7,7 @@ import userService from "../../utils/userService";
 import LandingPage from "../LandingPage/LandingPage";
 import CovidTrackerPage from "../CovidTrackerPage/CovidTackerPage";
 import AfricaPage from "../AfricaPage/AfricaPage"
+import AsiaPage from "../AsiaPage/AsiaPage"
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -42,6 +43,7 @@ function App() {
       <Routes>
         <Route path="/covidTracker" element={<CovidTrackerPage user={user} handleLogout={handleLogout} continent={continent}/>} />
         <Route path="/africa" element={<AfricaPage />} />
+        <Route path="/asia" element={<AsiaPage />} />
         <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
