@@ -43,29 +43,29 @@ function App() {
   }, [])
   
 
-  // useEffect(() => {
-  //   const countryUrl = "https://corona.lmao.ninja/v2/countries"
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
 
-  //   async function countryApiCall() {
-  //     const response = await fetch(countryUrl)
-  //     const data = await response.json()
-  //     setContinent({conutry: data})
-  //   }
-  //   countryApiCall()
-  // }, [])
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      setCountry(data)
+    }
+    countryApiCall()
+  }, [])
   
  
 
   if (user) {
     return (
       <Routes>
-        <Route path="/covidTracker" element={<CovidTrackerPage user={user} handleLogout={handleLogout} continent={continent}/>} />
-        <Route path="/africa" element={<AfricaPage />} />
-        <Route path="/asia" element={<AsiaPage />} />
-        <Route path="/europe" element={<EuropePage />} />
-        <Route path="/north-america" element={<NorthAmericaPage />} />
-        <Route path="/australia-oceania" element={<OceaniaPage />} />
-        <Route path="/south-america" element={<SouthAmericaPage />} />
+        <Route path="/covidTracker" element={<CovidTrackerPage user={user} handleLogout={handleLogout} continent={continent} country={country}/>} />
+        <Route path="/africa" element={<AfricaPage country={country}/>} />
+        <Route path="/asia" element={<AsiaPage country={country}/>} />
+        <Route path="/europe" element={<EuropePage country={country}/>} />
+        <Route path="/north-america" element={<NorthAmericaPage country={country}/>} />
+        <Route path="/australia-oceania" element={<OceaniaPage country={country}/>} />
+        <Route path="/south-america" element={<SouthAmericaPage country={country}/>} />
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       </Routes>

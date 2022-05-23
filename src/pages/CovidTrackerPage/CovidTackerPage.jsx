@@ -6,9 +6,10 @@ import Header from '../../components/Header/Header'
 
 
 
-export default function covidTrackerPage({user, handleLogout, continent}) {
+export default function covidTrackerPage({user, handleLogout, continent, country}) {
 
     console.log(continent)
+    console.log(country)
     
     return (
         <>
@@ -24,12 +25,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>Africa</Segment>
                             <Segment>
-                                Total Cases: {continent[5].cases}<br/>
-                                Active: {continent[5].active}<br/>
-                                Recovered: {continent[5].recovered}<br/>
-                                Deaths: {continent[5].deaths}<br/>
-                                Today Deaths: {continent[5].todayCases}<br/>
-                                Population: {continent[5].population}
+                                Total Cases: {continent[5]?.cases}<br/>
+                                Active: {continent[5]?.active}<br/>
+                                Recovered: {continent[5]?.recovered}<br/>
+                                Deaths: {continent[5]?.deaths}<br/>
+                                Today Cases: {continent[5]?.todayCases}<br/>
+                                Today Deaths: {continent[5]?.todayDeaths}<br/>
+                                Population: {continent[5]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
@@ -44,12 +46,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>Asia</Segment>
                             <Segment>
-                                Total Cases: {continent[1].cases}<br/>
-                                Active: {continent[1].active}<br/>
-                                Recovered: {continent[1].recovered}<br/>
-                                Deaths: {continent[1].deaths}<br/>
-                                Today Deaths: {continent[1].todayCases}<br/>
-                                Population: {continent[1].population}
+                                Total Cases: {continent[1]?.cases}<br/>
+                                Active: {continent[1]?.active}<br/>
+                                Recovered: {continent[1]?.recovered}<br/>
+                                Deaths: {continent[1]?.deaths}<br/>
+                                Today Cases: {continent[1]?.todayCases}<br/>
+                                Today Deaths: {continent[1]?.todayDeaths}<br/>
+                                Population: {continent[1]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
@@ -63,12 +66,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>Europe</Segment>
                             <Segment>
-                                Total Cases: {continent[3].cases}<br/>
-                                Active: {continent[3].active}<br/>
-                                Recovered: {continent[3].recovered}<br/>
-                                Deaths: {continent[3].deaths}<br/>
-                                Today Deaths: {continent[3].todayCases}<br/>
-                                Population: {continent[3].population}
+                                Total Cases: {continent[3]?.cases}<br/>
+                                Active: {continent[3]?.active}<br/>
+                                Recovered: {continent[3]?.recovered}<br/>
+                                Deaths: {continent[3]?.deaths}<br/>
+                                Today Cases: {continent[3]?.todayCases}<br/>
+                                Today Deaths: {continent[3]?.todayDeaths}<br/>
+                                Population: {continent[3]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
@@ -82,12 +86,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>North America</Segment>
                             <Segment>
-                                Total Cases: {continent[0].cases}<br/>
-                                Active: {continent[0].active}<br/>
-                                Recovered: {continent[0].recovered}<br/>
-                                Deaths: {continent[0].deaths}<br/>
-                                Today Deaths: {continent[0].todayCases}<br/>
-                                Population: {continent[0].population}
+                                Total Cases: {continent[0]?.cases}<br/>
+                                Active: {continent[0]?.active}<br/>
+                                Recovered: {continent[0]?.recovered}<br/>
+                                Deaths: {continent[0]?.deaths}<br/>
+                                Today Cases: {continent[0]?.todayCases}<br/>
+                                Today Deaths: {continent[0]?.todayDeaths}<br/>
+                                Population: {continent[0]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
@@ -101,12 +106,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>Australia-Oceania</Segment>
                             <Segment>
-                                Total Cases: {continent[4].cases}<br/>
-                                Active: {continent[4].active}<br/>
-                                Recovered: {continent[4].recovered}<br/>
-                                Deaths: {continent[4].deaths}<br/>
-                                Today Deaths: {continent[4].todayCases}<br/>
-                                Population: {continent[4].population}
+                                Total Cases: {continent[4]?.cases}<br/>
+                                Active: {continent[4]?.active}<br/>
+                                Recovered: {continent[4]?.recovered}<br/>
+                                Deaths: {continent[4]?.deaths}<br/>
+                                Today Cases: {continent[4]?.todayCases}<br/>
+                                Today Deaths: {continent[4]?.todayDeaths}<br/>
+                                Population: {continent[4]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
@@ -120,12 +126,13 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             </Link>
                             <Segment>South America</Segment>
                             <Segment>
-                                Total Cases: {continent[2].cases}<br/>
-                                Active: {continent[2].active}<br/>
-                                Recovered: {continent[2].recovered}<br/>
-                                Deaths: {continent[2].deaths}<br/>
-                                Today Deaths: {continent[2].todayCases}<br/>
-                                Population: {continent[2].population}
+                                Total Cases: {continent[2]?.cases}<br/>
+                                Active: {continent[2]?.active}<br/>
+                                Recovered: {continent[2]?.recovered}<br/>
+                                Deaths: {continent[2]?.deaths}<br/>
+                                Today Cases: {continent[2]?.todayCases}<br/>
+                                Today Deaths: {continent[2]?.todayDeaths}<br/>
+                                Population: {continent[2]?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
