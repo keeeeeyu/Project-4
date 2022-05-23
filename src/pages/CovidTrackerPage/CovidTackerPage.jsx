@@ -76,7 +76,9 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                 <Grid.Column>
                     <Card>
                         <Card.Content>
+                            <Link to="/northamerica">
                             <Image src="https://i.imgur.com/NASaccn.png"></Image>
+                            </Link>
                             <Segment>North America</Segment>
                             <Segment>
                                 Total Cases: {continent[0].cases}<br/>
