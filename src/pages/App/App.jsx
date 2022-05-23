@@ -26,12 +26,12 @@ function App() {
   useEffect(() => {
     const url = "https://corona.lmao.ninja/v2/continents";
 
-    async function makeApiCall() {
+    async function continentApiCall() {
       const response = await fetch(url)
       const data = await response.json()
       setContinent(data)
     }
-    makeApiCall()
+    continentApiCall()
   }, [])
 
 
