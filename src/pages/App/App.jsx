@@ -33,7 +33,8 @@ function App() {
     }
     continentApiCall()
   }, [])
-
+  
+ 
 
   if (user) {
     return (
