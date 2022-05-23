@@ -6,11 +6,13 @@ import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import LandingPage from "../LandingPage/LandingPage";
 import CovidTrackerPage from "../CovidTrackerPage/CovidTackerPage";
-import AfricaPage from "../AfricaPage/AfricaPage"
-import AsiaPage from "../AsiaPage/AsiaPage"
+import AfricaPage from "../AfricaPage/AfricaPage";
+import AsiaPage from "../AsiaPage/AsiaPage";
 import EuropePage from "../EuropePage/EuropePage";
 import NorthAmericaPage from "../NorthAmericaPage/NorthAmericaPage";
-import OceaniaPage from "../OceaniaPage/OceaniaPage"
+import OceaniaPage from "../OceaniaPage/OceaniaPage";
+import SouthAmericaPage from "../SouthAmericaPage/SouthAmericaPage";
+
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -50,14 +52,9 @@ function App() {
         <Route path="/europe" element={<EuropePage />} />
         <Route path="/north-america" element={<NorthAmericaPage />} />
         <Route path="/australia-oceania" element={<OceaniaPage />} />
-        <Route
-          path="/login"
-          element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
-        <Route
-          path="/signup"
-          element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
+        <Route path="/south-america" element={<SouthAmericaPage />} />
+        <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       </Routes>
     );
   }
@@ -65,14 +62,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route
-        path="/login"
-        element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-      />
-      <Route
-        path="/signup"
-        element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-      />
+      <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+      <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
