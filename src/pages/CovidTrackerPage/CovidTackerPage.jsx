@@ -15,6 +15,7 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
         <Grid textAlign='center' columns={3}>
             <Grid.Row>
                 <Grid.Column>
+                    <Link to="/africa">
                     <Card>
                         <Card.Content>
                             <Image src="https://i.imgur.com/wt9gbQ0.jpg"></Image>
@@ -30,6 +31,7 @@ export default function covidTrackerPage({user, handleLogout, continent}) {
                             <i class="eye icon"></i>
                         </Card.Content>
                     </Card>
+                    </Link>
                 </Grid.Column>
                 <Grid.Column>
                     <Card>
