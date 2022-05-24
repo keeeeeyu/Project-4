@@ -4,7 +4,7 @@ import EuPostCard from "../../components/EuPostCard/EuPostCard"
 
 
 function EuropePage({europe}) {
-    console.log(europe,"<---------euro")
+
     return (
         <>
         <EuPostCard europe={europe}/>

@@ -1,8 +1,14 @@
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
+import { Link } from 'react-router-dom'
+import AfPostCard from "../../components/AfPostCard/AfPostCard"
 
-function AfricaPage() {
+
+
+function AfricaPage({africa}) {
+    console.log(africa)
     return (
         <>
-        <h1>this is africa page</h1>
+        <AfPostCard africa={africa} />
         </>
     )
 }

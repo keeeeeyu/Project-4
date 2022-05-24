@@ -78,6 +78,7 @@ function App() {
     }
     countryApiCall()
   }, [])
+
   
   // Asia API call
   useEffect(() => {
