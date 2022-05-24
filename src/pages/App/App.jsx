@@ -19,8 +19,9 @@ function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
-  const [continent, setContinent] = useState("")
-  const [europe, setEurope] = useState("")
+  const [continent, setContinent] = useState("");
+  const [europe, setEurope] = useState("");
+  const [africa, setAfrica] = useState("");
 
 
   function handleSignUpOrLogin() {
@@ -58,7 +59,20 @@ function App() {
     countryApiCall()
   }, [])
   
-  console.log(europe,"<---------- country")
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
+
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      const mappedAfrica = mappingService.filterAfrica(data)
+      // console.log(mappedContinent,'<-------------')
+      setAfrica(mappedAfrica)
+      
+    }
+    countryApiCall()
+  }, [])
+  
   
 
   if (user) {
