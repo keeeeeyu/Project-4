@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import * as watchAPI from '../../utils/viewWatchListApi'
 
 
 
 
 export default function CovidTrackerPage({ user, handleLogout, continent }) {
 
-    
 
+    console.log(user,'<==user')
     
     return (
         <>

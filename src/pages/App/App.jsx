@@ -28,6 +28,7 @@ function App() {
   const [oceania, setOceania] = useState("");
 
 
+
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
   }
