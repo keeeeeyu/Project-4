@@ -1,11 +1,16 @@
-import CountryPostCard from '../../components/CountryPostCard/CountryPostCard'
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
+import { Link } from 'react-router-dom'
+import EuPostCard from "../../components/EuPostCard/EuPostCard"
 
-function EuropePage({country}) {
+
+function EuropePage({europe}) {
+
     return (
         <>
+        {europe.map((europes) => { 
+        return <EuPostCard europes={europes}/>
+    })}
         
-        <h1>This is europe page</h1>
-        <CountryPostCard euCountry={country} />
         </>
     )
 }

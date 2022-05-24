@@ -1,0 +1,41 @@
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
+import { Link } from 'react-router-dom'
+
+
+function EuPostCard({ europes }) {
+
+    // const flagMap = europe.map(a => a.countryInfo.flag)
+    // console.log(flagMap,"<------- flag")
+
+    return (
+        <>
+        <Grid textAlign='center' columns={3}>
+            <Grid.Row>
+                <Grid.Column>
+                    
+                    <Card>
+                        <Card.Content>
+                            <Link to="/africa">
+                                <Image src={europes.countryInfo.flag}></Image>
+                            </Link>
+                            <Segment>{europes.country}</Segment>
+                            <Segment>
+                                Total Cases:<br/>
+                                Active:<br/>
+                                Recovered: <br/>
+                                Deaths: <br/>
+                                Today Cases: <br/>
+                                Today Deaths: <br/>
+                                Population: 
+                            </Segment>
+                            <i class="eye icon"></i>
+                        </Card.Content>
+                    </Card>
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+        </>
+    )
+}
+
+export default EuPostCard
