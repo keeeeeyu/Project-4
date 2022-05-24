@@ -1,10 +1,12 @@
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
+import { Link } from 'react-router-dom'
+import OcPostCard from "../../components/OcPostCard/OcPostCard"
 
 
-
-function Oceania() {
+function Oceania({ oceania }) {
     return (
         <>
-        <h1>this is oceania page</h1>
+        <OcPostCard oceania={oceania} />
         </>
     )
 }
