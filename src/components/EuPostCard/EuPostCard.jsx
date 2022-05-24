@@ -4,7 +4,7 @@ import React from "react"
 
 
 function EuPostCard({ europe }) {
-    console.log(europe,"<------- europe here")
+    
     // const mapEurope = europe.map(a => a.countryInfo.flag)
     // console.log(mapEurope,"<------ maps")
 

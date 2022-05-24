@@ -8,7 +8,7 @@ import Header from '../../components/Header/Header'
 
 export default function CovidTrackerPage({user, handleLogout, continent, country}) {
 
-    console.log(continent,'<-----------')
+    
 
     
     return (
