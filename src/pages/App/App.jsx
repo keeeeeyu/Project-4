@@ -20,9 +20,10 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [continent, setContinent] = useState("");
-  const [europe, setEurope] = useState("");
   const [africa, setAfrica] = useState("");
   const [asia, setAsia] = useState("");
+  const [europe, setEurope] = useState("");
+  const [northAmerica, setNorthAmerica] = useState("");
 
 
   function handleSignUpOrLogin() {
@@ -88,6 +89,20 @@ function App() {
     countryApiCall()
   }, []) 
 
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
+
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      const mappedNa = mappingService.filterNorthAmerica(data)
+      // console.log(mappedContinent,'<-------------')
+      setNorthAmerica(mappedNa)
+      
+    }
+    countryApiCall()
+  }, []) 
+  
   if (user) {
     return (
       <Routes>
