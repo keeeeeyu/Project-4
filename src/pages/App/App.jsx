@@ -143,12 +143,12 @@ function App() {
     return (
       <Routes>
         <Route path="/covidTracker" element={<CovidTrackerPage user={user} handleLogout={handleLogout} continent={continent}/>} />
-        <Route path="/africa" element={<AfricaPage />} />
-        <Route path="/asia" element={<AsiaPage />} />
+        <Route path="/africa" element={<AfricaPage africa={africa}/>} />
+        <Route path="/asia" element={<AsiaPage asia={asia}/>} />
         <Route path="/europe" element={<EuropePage europe={europe}/>} />
-        <Route path="/north-america" element={<NorthAmericaPage />} />
-        <Route path="/australia-oceania" element={<OceaniaPage />} />
-        <Route path="/south-america" element={<SouthAmericaPage />} />
+        <Route path="/north-america" element={<NorthAmericaPage northAmerica={northAmerica}/>} />
+        <Route path="/australia-oceania" element={<OceaniaPage oceania={oceania}/>} />
+        <Route path="/south-america" element={<SouthAmericaPage southAmerica={southAmerica}/>} />
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       </Routes>
