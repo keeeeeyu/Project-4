@@ -23,13 +23,13 @@ function EuPostCard({ europe }) {
                             <Image src={a?.countryInfo.flag}></Image>
                             <Segment>{a?.country}</Segment>
                             <Segment>
-                                Total Cases:<br/>
-                                Active:<br/>
-                                Recovered: <br/>
-                                Deaths: <br/>
-                                Today Cases: <br/>
-                                Today Deaths: <br/>
-                                Population: 
+                                Total Cases: {a?.cases}<br/>
+                                Active: {a?.active}<br/>
+                                Recovered: {a?.recovred}<br/>
+                                Deaths: {a?.deaths}<br/>
+                                Today Cases: {a?.todayCases}<br/>
+                                Today Deaths: {a?.todayDeaths}<br/>
+                                Population: {a?.population}
                             </Segment>
                             <i class="eye icon"></i>
                         </Card.Content>
