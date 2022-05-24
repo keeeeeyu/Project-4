@@ -22,6 +22,7 @@ function App() {
   const [continent, setContinent] = useState("");
   const [europe, setEurope] = useState("");
   const [africa, setAfrica] = useState("");
+  const [asia, setAsia] = useState("");
 
 
   function handleSignUpOrLogin() {
@@ -73,7 +74,19 @@ function App() {
     countryApiCall()
   }, [])
   
-  
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
+
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      const mappedAsia = mappingService.filterAsia(data)
+      // console.log(mappedContinent,'<-------------')
+      setAsia(mappedAsia)
+      
+    }
+    countryApiCall()
+  }, []) 
 
   if (user) {
     return (
