@@ -6,4 +6,4 @@ const viewWatchListSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Watch', viewWatchListSchema);
+module.exports = mongoose.model('ViewWatchList', viewWatchListSchema);

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
-import { Link } from 'react-router-dom'
-import Header from '../../components/Header/Header'
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
+import { Link } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
 
 
 
-export default function CovidTrackerPage({user, handleLogout, continent, country}) {
+export default function CovidTrackerPage({ user, handleLogout, continent }) {
 
     
 
@@ -17,7 +17,6 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
         <Grid textAlign='center' columns={3}>
             <Grid.Row>
                 <Grid.Column>
-                    
                     <Card>
                         <Card.Content>
                             <Link to="/africa">
@@ -33,10 +32,9 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[5]?.todayDeaths}<br/>
                                 Population: {continent[5]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
-                    </Card>
-                    
+                    </Card>   
                 </Grid.Column>
                 <Grid.Column>
                     <Card>
@@ -54,7 +52,7 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[1]?.todayDeaths}<br/>
                                 Population: {continent[1]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -74,7 +72,7 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[3]?.todayDeaths}<br/>
                                 Population: {continent[3]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -94,7 +92,7 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[0]?.todayDeaths}<br/>
                                 Population: {continent[0]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -114,7 +112,7 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[4]?.todayDeaths}<br/>
                                 Population: {continent[4]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -134,7 +132,7 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
                                 Today Deaths: {continent[2]?.todayDeaths}<br/>
                                 Population: {continent[2]?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>
@@ -142,4 +140,4 @@ export default function CovidTrackerPage({user, handleLogout, continent, country
         </Grid>
         </>
     )
-}
+};
