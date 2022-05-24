@@ -5,7 +5,7 @@ import AfPostCard from "../../components/AfPostCard/AfPostCard"
 
 
 function AfricaPage({africa}) {
-    console.log(africa)
+    
     return (
         <>
         <AfPostCard africa={africa} />

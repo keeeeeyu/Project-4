@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import React from "react"
 
 
-function AfPostCard({ africa }) {
+function AsPostCard({ asia }) {
 
     return (
         
         <> 
         <Grid textAlign='center' columns={3}>
-            <Grid.Row>{Array.from(africa).map((a)=> (
+            <Grid.Row>{Array.from(asia).map((a)=> (
                 <Grid.Column>
                     <Card>
                         <Card.Content>
@@ -35,4 +35,4 @@ function AfPostCard({ africa }) {
     )
 }
 
-export default AfPostCard
+export default AsPostCard

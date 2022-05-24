@@ -1,8 +1,14 @@
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
+import { Link } from 'react-router-dom'
+import AsPostCard from "../../components/AsPostCard/AsPostCard"
 
-function asiaPage() {
+
+
+
+function asiaPage({asia}) {
     return (
         <>
-        <h1>this is asia page</h1>
+        <AsPostCard asia={asia}/>
         </>
     )
 }
