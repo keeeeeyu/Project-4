@@ -19,12 +19,19 @@ function filterNorthAmerica(continent) {
 function filterSouthAmerica(continent) {
     const saData = continent.filter(countries => countries.continent === 'South America')
 }
+
+function filterOceania(continent) {
+    const ocData = continent.filter(countries => countries.continent === 'Australia-Oceania')
+}
+
 const mappingService = {
   filterEurope,
   filterAfrica,
   filterAsia,
   filterNorthAmerica,
-  filterSouthAmerica
+  filterSouthAmerica,
+  filterOceania
+
 };
 
 export default mappingService;
