@@ -4,12 +4,12 @@ import EuPostCard from "../../components/EuPostCard/EuPostCard"
 
 
 function EuropePage({europe}) {
-
+    console.log(europe,"<---------euro")
     return (
         <>
-        {europe.map((europes) => { 
-        return <EuPostCard europes={europes}/>
-    })}
+       
+        <EuPostCard europe={europe}/>
+
         
         </>
     )

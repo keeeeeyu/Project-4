@@ -1,24 +1,30 @@
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
 import { Link } from 'react-router-dom'
+import React from "react"
 
 
-function EuPostCard({ europes }) {
+function EuPostCard({ europe }) {
+    console.log(europe,"<------- europe here")
+    // const mapEurope = europe.map(a => a.countryInfo.flag)
+    // console.log(mapEurope,"<------ maps")
+
 
     // const flagMap = europe.map(a => a.countryInfo.flag)
     // console.log(flagMap,"<------- flag")
 
     return (
-        <>
+        
+        <> 
         <Grid textAlign='center' columns={3}>
             <Grid.Row>
                 <Grid.Column>
-                    
+                <div>{Array.from(europe).map((a)=> (
                     <Card>
                         <Card.Content>
-                            <Link to="/africa">
-                                <Image src={europes.countryInfo.flag}></Image>
-                            </Link>
-                            <Segment>{europes.country}</Segment>
+                            
+                                <Image src={a?.countryInfo.flag}></Image>
+                            
+                            <Segment>{a?.country}</Segment>
                             <Segment>
                                 Total Cases:<br/>
                                 Active:<br/>
@@ -31,6 +37,7 @@ function EuPostCard({ europes }) {
                             <i class="eye icon"></i>
                         </Card.Content>
                     </Card>
+                    ))}</div>
                 </Grid.Column>
             </Grid.Row>
         </Grid>
