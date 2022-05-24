@@ -16,14 +16,11 @@ function EuPostCard({ europe }) {
         
         <> 
         <Grid textAlign='center' columns={3}>
-            <Grid.Row>
+            <Grid.Row>{Array.from(europe).map((a)=> (
                 <Grid.Column>
-                <div>{Array.from(europe).map((a)=> (
                     <Card>
                         <Card.Content>
-                            
-                                <Image src={a?.countryInfo.flag}></Image>
-                            
+                            <Image src={a?.countryInfo.flag}></Image>
                             <Segment>{a?.country}</Segment>
                             <Segment>
                                 Total Cases:<br/>
@@ -37,10 +34,10 @@ function EuPostCard({ europe }) {
                             <i class="eye icon"></i>
                         </Card.Content>
                     </Card>
-                    ))}</div>
                 </Grid.Column>
-            </Grid.Row>
+            ))}</Grid.Row>
         </Grid>
+
         </>
     )
 }

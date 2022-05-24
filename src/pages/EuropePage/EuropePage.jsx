@@ -7,10 +7,7 @@ function EuropePage({europe}) {
     console.log(europe,"<---------euro")
     return (
         <>
-       
         <EuPostCard europe={europe}/>
-
-        
         </>
     )
 }
