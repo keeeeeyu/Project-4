@@ -13,4 +13,4 @@ function NorthAmericaPage({ northAmerica }) {
     )
 }
 
-export default NorthAmericaPage
+export default NorthAmericaPage;
