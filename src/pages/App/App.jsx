@@ -25,6 +25,7 @@ function App() {
   const [europe, setEurope] = useState("");
   const [northAmerica, setNorthAmerica] = useState("");
   const [southAmerica, setSouthAmerica] = useState("");
+  const [oceania, setOceania] = useState("");
 
 
   function handleSignUpOrLogin() {
@@ -108,6 +109,7 @@ function App() {
     countryApiCall()
   }, []) 
   
+  // SA API call
   useEffect(() => {
     const countryUrl = "https://corona.lmao.ninja/v2/countries"
 
@@ -122,6 +124,20 @@ function App() {
     countryApiCall()
   }, []) 
 
+  // Oceania API call
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
+
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      const mappedOc = mappingService.filterOceania(data)
+      // console.log(mappedContinent,'<-------------')
+      setOceania(mappedOc)
+      
+    }
+    countryApiCall()
+  }, []) 
 
   if (user) {
     return (
