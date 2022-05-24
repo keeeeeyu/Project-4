@@ -1,7 +1,7 @@
 
 
 
-function southAmericaPage() {
+function SouthAmericaPage() {
     return (
         <>
         <h1>this is SA page</h1>
@@ -9,4 +9,4 @@ function southAmericaPage() {
     )
 }
 
-export default southAmericaPage
+export default SouthAmericaPage

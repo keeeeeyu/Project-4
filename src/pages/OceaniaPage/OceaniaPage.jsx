@@ -1,7 +1,7 @@
 
 
 
-function oceania() {
+function Oceania() {
     return (
         <>
         <h1>this is oceania page</h1>
@@ -9,4 +9,4 @@ function oceania() {
     )
 }
 
-export default oceania
+export default Oceania

@@ -6,10 +6,10 @@ import Header from '../../components/Header/Header'
 
 
 
-export default function covidTrackerPage({user, handleLogout, continent, country}) {
+export default function CovidTrackerPage({user, handleLogout, continent, country}) {
 
     console.log(continent)
-    console.log(country)
+
     
     return (
         <>

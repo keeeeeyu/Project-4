@@ -1,13 +1,28 @@
+import { useState } from 'react'
+import { Card, Image, Segment } from "semantic-ui-react"
 
 
 
-function countryPostCard({euCountry}) {
-    console.log(euCountry,'<------eu')
+function CountryPostCard({euCountry}) {
+
+
+    const country = Object.values(euCountry)
+    const result = country.filter(countries => countries?.continent === 'Europe')
+
+
+
     return (
         <>
-        <h1>this is post card page</h1>
+        <h1></h1>
+        {/* <Card>
+
+            <Card.Content>
+                <Image src={datas} />
+            </Card.Content>
+
+        </Card> */}
         </>
     )
 }
 
-export default countryPostCard
+export default CountryPostCard

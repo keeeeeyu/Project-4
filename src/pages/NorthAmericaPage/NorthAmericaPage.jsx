@@ -1,7 +1,7 @@
 
 
 
-function northAmericaPage() {
+function NorthAmericaPage() {
     return (
         <>
         <h1>this is NA page</h1>
@@ -9,4 +9,4 @@ function northAmericaPage() {
     )
 }
 
-export default northAmericaPage
+export default NorthAmericaPage

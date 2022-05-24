@@ -1,5 +1,5 @@
 
-function africaPage() {
+function AfricaPage() {
     return (
         <>
         <h1>this is africa page</h1>
@@ -8,4 +8,4 @@ function africaPage() {
 }
 
 
-export default africaPage
+export default AfricaPage

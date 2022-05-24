@@ -1,6 +1,6 @@
 import CountryPostCard from '../../components/CountryPostCard/CountryPostCard'
 
-function europePage({country}) {
+function EuropePage({country}) {
     return (
         <>
         
@@ -10,4 +10,4 @@ function europePage({country}) {
     )
 }
 
-export default europePage
+export default EuropePage
