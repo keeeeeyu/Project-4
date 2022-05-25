@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Header, Segment, Input, Icon, Form } from "semantic-ui-react";
+import { Header, Segment, Form } from "semantic-ui-react";
 
 function PageHeader({ handleLogout }) {
   const navigate = useNavigate()
   const [input, setInput] = useState({
     search: ''
   })
-  console.log(input.search)
+
   function handleSearchChange(e) {
-    console.log(e.target)
+
     setInput({ search: e.target.value })
   }
 
   function handleSubmit(){
-    navigate(`/country/${input.search}/detail}`) 
+    navigate(`/country/${input.search}/detail`) 
   }
 
   return (
@@ -30,14 +30,9 @@ function PageHeader({ handleLogout }) {
         </Link>
       </Header>
         <Header floated="right">
-        <Input size="small" icon placeholder='Search...'>
-        <input
-        value={input.search}
-        onChange={handleSearchChange}
-        onSubmit={handleSubmit}
-        />
-        <Icon name='search' />
-        </Input>
+        <Form onSubmit={handleSubmit}>
+        <Form.Input icon placeholder='Search Country...' value={input.search} onChange={handleSearchChange}/>
+        </Form>
         </Header>
 
     </Segment>

@@ -9,6 +9,30 @@ import { useState } from "react";
 function CountryPage({ countryPage, user }) {    
     const { continentName } = useParams()
 
+    const [favorites, setFavorites] = useState([]);
+    const [error, setError] = useState('')
+
+    console.log(favorites,"<--- favorite")
+
+    async function addFavorite(favorite) {
+        
+        const data = await favoriteAPI.create(favorite);
+        console.log(data, 'this is add favorite')
+        console.log(favorite);
+        setFavorites([data.favorite, ...favorites])
+    }
+    console.log(favorites)
+
+    async function removeFavorite(favoriteId) {
+        try {
+            const data = await favoriteAPI.removeFavorite(favoriteId)
+            console.log(data,'<----- this is remove favorite')
+        } catch(err){
+            console.log(err)
+            setError(err.message)
+        }
+    }
+
 
     return (
         <>
@@ -37,6 +61,8 @@ function CountryPage({ countryPage, user }) {
                             </Segment>
                             <Icon 
                             name="star"
+                            // color={favoriteColor}
+                            onClick={addFavorite} 
                             />
                         </Card.Content>
                     </Card>
