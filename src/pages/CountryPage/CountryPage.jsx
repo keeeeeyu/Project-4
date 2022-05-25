@@ -1,31 +1,35 @@
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Header from "../../components/Header/Header";
 
 
-function CountryPage({ countryPage }) {
-    
-    
+function CountryPage({ countryPage }) {    
+
+    const { continentName } = useParams()
+
     return (
         <>
         <Header />
+        <Segment textAlign="center">{ continentName }</Segment>
         <Grid textAlign='center' columns={3}>
-            <Grid.Row>{Array.from(countryPage).map((a)=> (
+            <Grid.Row>{Array.from(countryPage).map((country)=> (
                 <Grid.Column>
                     <Card>
                         <Card.Content>
-                            <Image src={a?.countryInfo.flag}></Image>
-                            <Segment>{a?.country}</Segment>
+                            <Link to={`/country/${country.country}/detail`}>
+                                <Image src={country?.countryInfo.flag}></Image>
+                            </Link>
+                            <Segment>{country?.country}</Segment>
                             <Segment>
-                                Total Cases: {a?.cases}<br/>
-                                Active: {a?.active}<br/>
-                                Recovered: {a?.recovred}<br/>
-                                Deaths: {a?.deaths}<br/>
-                                Today Cases: {a?.todayCases}<br/>
-                                Today Deaths: {a?.todayDeaths}<br/>
-                                Population: {a?.population}
+                                Total Cases: {country?.cases}<br/>
+                                Active: {country?.active}<br/>
+                                Recovered: {country?.recovred}<br/>
+                                Deaths: {country?.deaths}<br/>
+                                Today Cases: {country?.todayCases}<br/>
+                                Today Deaths: {country?.todayDeaths}<br/>
+                                Population: {country?.population}
                             </Segment>
-                            <i class="eye icon"></i>
+                            <Icon name="star" />
                         </Card.Content>
                     </Card>
                 </Grid.Column>

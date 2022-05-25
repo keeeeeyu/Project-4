@@ -1,15 +1,12 @@
 import { useState,  } from 'react';
-import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
+import { Card, Grid, Image, Segment } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 
 
 
-function ContinentPage({ user, handleLogout, continent, setCountryPage, country, handleClick }) {
-
-
-
-
+function ContinentPage({ user, handleLogout, continent, handleClick }) {
+    
     return (
         <>
         <Header user={user} handleLogout={handleLogout}/>
@@ -31,7 +28,6 @@ function ContinentPage({ user, handleLogout, continent, setCountryPage, country,
                                 Today Deaths: {continent?.todayDeaths}<br/>
                                 Population: {continent?.population}
                             </Segment>
-                            <Icon name={'eye'} />
                         </Card.Content>
                     </Card>   
                 </Grid.Column>

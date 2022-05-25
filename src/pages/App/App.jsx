@@ -8,8 +8,9 @@ import continentMapping from "../../utils/continentMapping";
 import mappingService from "../../utils/mappingService";
 import LandingPage from "../LandingPage/LandingPage";
 import ContinentPage from "../ContinentPage/ContinentPage"
-import Detail from "../../components/Detail/Detail"
 import CountryPage from "../CountryPage/CountryPage";
+import DetailPage from "../DetailPage/DetailPage"
+
 
 
 
@@ -19,7 +20,6 @@ function App() {
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [continent, setContinent] = useState("");
   const [country, setCountry] = useState("");
-  const [countryName, setCountryName] = useState("");
   const [countryPage, setCountryPage] = useState();
 
 
@@ -81,9 +81,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-        <Route path="/africa/:countryName" element={<Detail setCountryName={setCountryName}/>} />
+        <Route path="/country/:countryName/detail" element={<DetailPage />} />
         <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} handleClick={handleClick}/>} />
-        <Route path="/country/:countinentName" element={<CountryPage countryPage={countryPage}/>} />
+        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage}/>} />
       </Routes>
     );
   }
