@@ -10,9 +10,8 @@ async function create(req, res){
     try {
 		// Find a post, so we need the id of the post
         // const post = await Post.findById(req.params.id);
-		
-        Favorite.push({username: req.user.username, userId: req.user._id}); //mutating a document
-        await Favorite.save()// save it
+		const favorite = new Favorite.push({username: req.user.username, userId: req.user._id})
+        await favorite.save()// save it
         res.status(201).json({data: 'like added'})
     } catch(err){
        

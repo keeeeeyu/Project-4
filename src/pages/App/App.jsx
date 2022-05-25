@@ -6,6 +6,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import continentMapping from "../../utils/continentMapping";
 import mappingService from "../../utils/mappingService";
+import * as favoriteAPI from "../../utils/favoriteApi";
 import LandingPage from "../LandingPage/LandingPage";
 import ContinentPage from "../ContinentPage/ContinentPage"
 import CountryPage from "../CountryPage/CountryPage";
@@ -20,7 +21,9 @@ function App() {
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [continent, setContinent] = useState("");
   const [country, setCountry] = useState("");
-  const [countryPage, setCountryPage] = useState();
+  const [countryPage, setCountryPage] = useState("");
+  const [favorites, setFavorites] = useState("")
+  const [error, setError] = useState("");
 
 
   function handleSignUpOrLogin() {
@@ -75,7 +78,20 @@ function App() {
     }
   }
   
-  
+  // async function getFavorites() {
+  //   try {
+  //     const data = await favoriteAPI.getAll();
+  //     console.log(data, " this is data,");
+  //     setFavorites([...data.favorites]);
+  //   } catch (err) {
+  //     console.log(err.message, " this is the error");
+  //     setError(err.message);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getFavorites()
+  // }, [])
   
   if (user) {
     return (
@@ -84,7 +100,7 @@ function App() {
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/country/:countryName/detail" element={<DetailPage />} />
         <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} handleClick={handleClick}/>} />
-        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage}/>} />
+        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} favorites={favorites}/>} />
       </Routes>
     );
   }
