@@ -4,15 +4,19 @@ import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
+import continentMapping from "../../utils/continentMapping";
 import mappingService from "../../utils/mappingService";
 import LandingPage from "../LandingPage/LandingPage";
 import CovidTrackerPage from "../CovidTrackerPage/CovidTackerPage";
+import ContinentPage from "../ContinentPage/ContinentPage"
 import AfricaPage from "../AfricaPage/AfricaPage";
 import AsiaPage from "../AsiaPage/AsiaPage";
 import EuropePage from "../EuropePage/EuropePage";
 import NorthAmericaPage from "../NorthAmericaPage/NorthAmericaPage";
 import OceaniaPage from "../OceaniaPage/OceaniaPage";
 import SouthAmericaPage from "../SouthAmericaPage/SouthAmericaPage";
+import Detail from "../../components/Detail/Detail"
+
 
 
 function App() {
@@ -20,13 +24,15 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
   const [continent, setContinent] = useState("");
+  const [country, setCountry] = useState("");
   const [africa, setAfrica] = useState("");
   const [asia, setAsia] = useState("");
   const [europe, setEurope] = useState("");
   const [northAmerica, setNorthAmerica] = useState("");
   const [southAmerica, setSouthAmerica] = useState("");
   const [oceania, setOceania] = useState("");
-
+  const [countryName, setCountryName] = useState("");
+  
 
 
   function handleSignUpOrLogin() {
@@ -45,11 +51,28 @@ function App() {
     async function continentApiCall() {
       const response = await fetch(continentUrl)
       const data = await response.json()
-      setContinent(data)
+      const mappedContinent = continentMapping.mapContinent(data)
+      console.log(mappedContinent,"<<<<<")
+      setContinent(mappedContinent)
     }
     continentApiCall()
   }, [])
-  
+
+  useEffect(() => {
+    const countryUrl = "https://corona.lmao.ninja/v2/countries"
+
+    async function countryApiCall() {
+      const response = await fetch(countryUrl)
+      const data = await response.json()
+      const mappedCountries = mappingService.mappedCountry(data)
+      setCountry(mappedCountries)
+      
+    }
+    countryApiCall()
+  }, []) 
+
+  console.log(country.asia,"<----asia")
+
   // Europe API call
   useEffect(() => {
     const countryUrl = "https://corona.lmao.ninja/v2/countries"
@@ -148,11 +171,13 @@ function App() {
         <Route path="/africa" element={<AfricaPage africa={africa}/>} />
         <Route path="/asia" element={<AsiaPage asia={asia}/>} />
         <Route path="/europe" element={<EuropePage europe={europe}/>} />
-        <Route path="/north-america" element={<NorthAmericaPage northAmerica={northAmerica}/>} />
+        <Route path="/north%20america" element={<NorthAmericaPage northAmerica={northAmerica}/>} />
         <Route path="/australia-oceania" element={<OceaniaPage oceania={oceania}/>} />
-        <Route path="/south-america" element={<SouthAmericaPage southAmerica={southAmerica}/>} />
+        <Route path="/south%20america" element={<SouthAmericaPage southAmerica={southAmerica}/>} />
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path="/africa/:countryName" element={<Detail setCountryName={setCountryName}/>} />
+        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} />} />
       </Routes>
     );
   }

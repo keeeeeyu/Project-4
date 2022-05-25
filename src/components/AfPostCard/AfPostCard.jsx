@@ -1,10 +1,13 @@
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import countryDetail from "../Detail/Detail"
 import React from "react"
 
 
-function AfPostCard({ africa }) {
+function AfPostCard({ africa, setCountryName }) {
 
+    
+    
     return (
         
         <> 
@@ -13,7 +16,9 @@ function AfPostCard({ africa }) {
                 <Grid.Column>
                     <Card>
                         <Card.Content>
+                            <Link to={`/africa/${a?.country}`} >
                             <Image src={a?.countryInfo.flag}></Image>
+                            </Link>
                             <Segment>{a?.country}</Segment>
                             <Segment>
                                 Total Cases: {a?.cases}<br/>

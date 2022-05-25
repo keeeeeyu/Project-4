@@ -1,42 +1,34 @@
+function mappedCountry(country) {
+    const mappedContinent = {
+        asia: [],
+        africa: [],
+        northAmerica: [],
+        southAmerica: [],
+        europe: [],
+        oceania: []
+        };
 
-function filterEurope(continent) {
-    const euData = continent.filter(countries => countries.continent === 'Europe')
-    return euData;
-}
-
-function filterAfrica(continent) {
-    const afData = continent.filter(countries => countries.continent === 'Africa')
-    return afData;
-}
-
-function filterAsia(continent) {
-    const asData = continent.filter(countries => countries.continent === 'Asia')
-    return asData;
-}
-
-function filterNorthAmerica(continent) {
-    const naData = continent.filter(countries => countries.continent === 'North America')
-    return naData;
-}
-
-function filterSouthAmerica(continent) {
-    const saData = continent.filter(countries => countries.continent === 'South America')
-    return saData;
-}
-
-function filterOceania(continent) {
-    const ocData = continent.filter(countries => countries.continent === 'Australia-Oceania')
-    return ocData;
+    Array.from(country).map(countries => {
+        if(countries.continent === 'Europe') {
+            mappedContinent.europe.push(countries)
+        } else if (countries.continent === 'Asia') {
+            mappedContinent.asia.push(countries)
+        } else if (countries.continent === 'Africa') {
+            mappedContinent.africa.push(countries)
+        } else if (countries.continent === 'North America') {
+            mappedContinent.northAmerica.push(countries)
+        } else if (countries.continent === 'South America') {
+            mappedContinent.southAmerica.push(countries)
+        } else if (countries.continent === 'Australia-Oceania') {
+            mappedContinent.oceania.push(countries)
+        }
+        return null;
+    })
+    return mappedContinent;
 }
 
 const mappingService = {
-  filterEurope,
-  filterAfrica,
-  filterAsia,
-  filterNorthAmerica,
-  filterSouthAmerica,
-  filterOceania
-
+  mappedCountry
 };
 
 export default mappingService;

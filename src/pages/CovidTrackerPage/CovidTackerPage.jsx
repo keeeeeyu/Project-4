@@ -9,8 +9,28 @@ import * as watchAPI from '../../utils/viewWatchListApi'
 
 export default function CovidTrackerPage({ user, handleLogout, continent }) {
 
+    const [error, setError] = useState('')
 
-    console.log(user,'<==user')
+    async function addWatch(watchIdContinent) {
+        try {
+            const data = await watchAPI.create(watchIdContinent)
+            console.log(data, '<----- reponse from the server when we view continent')
+        } catch(err){
+            console.log(err)
+            setError(err.message)
+        }
+    }
+    
+    async function removeWatch(watchId) {
+        try {
+            const data = await watchAPI.removeWatch(watchId);
+            console.log(data, '<---- response from the server when we are not vewing continent')
+
+        } catch(err){
+            console.log(err)
+            setError(err.message);
+        }
+    }
     
     return (
         <>

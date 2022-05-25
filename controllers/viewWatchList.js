@@ -20,7 +20,8 @@ async function create(req, res){
 async function deleteWatch(req, res){
     try {
         Watch.remove(req.params.id)
-        await post.save();
+        await post.save()
+        res.json({data: 'removed'})
     } catch(err){
         res.status(400).json({err})
     }
