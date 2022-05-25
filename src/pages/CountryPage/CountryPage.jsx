@@ -32,7 +32,16 @@ function CountryPage({ countryPage, user }) {
         }
     }
 
+    const favoriteIdx = favorites.findIndex(
+        (favorite) => favorite.userId === user._id
+    );
 
+    const clickHandler = 
+        favoriteIdx > -1
+        ? () => removeFavorite(favorites[favoriteIdx]._id)
+        : () => addFavorite(favorites._id)    
+
+    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
 
     return (
         <>
@@ -61,8 +70,8 @@ function CountryPage({ countryPage, user }) {
                             </Segment>
                             <Icon 
                             name="star"
-                            // color={favoriteColor}
-                            onClick={addFavorite} 
+                            color={favoriteColor}
+                            onClick={clickHandler} 
                             />
                         </Card.Content>
                     </Card>

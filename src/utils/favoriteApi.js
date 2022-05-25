@@ -14,8 +14,8 @@ export function create(){
     })
 }
 
-export function removeFavorite() {
-    return fetch(`${BASE_URL}`, {
+export function removeFavorite(favoriteId) {
+    return fetch(`${BASE_URL}/${favoriteId}`, {
         method: 'DELETE',
         headers: {
 			'Authorization': 'Bearer ' + tokenService.getToken()
