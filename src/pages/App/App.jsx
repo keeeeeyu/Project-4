@@ -44,6 +44,7 @@ function App() {
     }
     continentApiCall()
   }, [])
+  
   // Country API call
   useEffect(() => {
     const countryUrl = "https://corona.lmao.ninja/v2/countries"

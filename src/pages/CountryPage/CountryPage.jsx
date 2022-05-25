@@ -10,15 +10,18 @@ function CountryPage({ countryPage }) {
     return (
         <>
         <Header />
-        <Segment textAlign="center">{ continentName }</Segment>
+        <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country)=> (
                 <Grid.Column>
                     <Card>
                         <Card.Content>
-                            <Link to={`/country/${country.country}/detail`}>
-                                <Image src={country?.countryInfo.flag}></Image>
-                            </Link>
+                        
+                            <Segment>
+                                <Link to={`/country/${country.country}/detail`}>
+                                    <Image src={country?.countryInfo.flag}></Image>
+                                </Link>
+                            </Segment>
                             <Segment>{country?.country}</Segment>
                             <Segment>
                                 Total Cases: {country?.cases}<br/>
