@@ -13,7 +13,8 @@ function PageHeader({ handleLogout }) {
     setInput({ search: e.target.value })
   }
 
-  function handleSubmit(){
+  function handleSubmit(e){
+    e.preventDefault()
     navigate(`/country/${input.search}/detail`) 
   }
 

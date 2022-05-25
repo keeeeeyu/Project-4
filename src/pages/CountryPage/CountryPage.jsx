@@ -12,16 +12,15 @@ function CountryPage({ countryPage, user }) {
     const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState('')
 
-    console.log(favorites,"<--- favorite")
+
 
     async function addFavorite(favorite) {
         
         const data = await favoriteAPI.create(favorite);
-        console.log(data, 'this is add favorite')
-        console.log(favorite);
+        console.log(data, 'this is add favorite data')
         setFavorites([data.favorite, ...favorites])
     }
-    console.log(favorites)
+    console.log(favorites,"<--------favorites")
 
     async function removeFavorite(favoriteId) {
         try {
@@ -32,6 +31,7 @@ function CountryPage({ countryPage, user }) {
             setError(err.message)
         }
     }
+
 
 
     return (

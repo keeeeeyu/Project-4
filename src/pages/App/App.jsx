@@ -78,21 +78,7 @@ function App() {
     }
   }
   
-  // async function getFavorites() {
-  //   try {
-  //     const data = await favoriteAPI.getAll();
-  //     console.log(data, " this is data,");
-  //     setFavorites([...data.favorites]);
-  //   } catch (err) {
-  //     console.log(err.message, " this is the error");
-  //     setError(err.message);
-  //   }
-  // }
 
-  // useEffect(() => {
-  //   getFavorites()
-  // }, [])
-  
   if (user) {
     return (
       <Routes>
