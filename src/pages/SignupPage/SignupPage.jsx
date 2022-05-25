@@ -57,7 +57,7 @@ export default function SignUpPage(props) {
       props.handleSignUpOrLogin(); // <- this will decode the token from local storage
       // that we just recieved as a respone to our userService.signup fetch call,
       // and decode and update the state in our App component
-      navigate('/covidTracker')
+      navigate('/continent')
 
     } catch(err){
       console.log(err.message);

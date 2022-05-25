@@ -7,7 +7,7 @@ function PageHeader({ user, handleLogout }) {
   return (
     <Segment clearing>
         <Header as="h2" floated="left">
-        <Link to="/covidTracker">
+        <Link to="/continent">
           CovidTracker
         </Link>
         </Header>
