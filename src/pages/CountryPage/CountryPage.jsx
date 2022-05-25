@@ -9,49 +9,7 @@ import { useState } from "react";
 function CountryPage({ countryPage, user }) {    
     const { continentName } = useParams()
 
-    const [favorites, setFavorites] = useState();
 
-    async function handleClick(favorite) {
-        console.log(favorite);
-        const data = await favoriteAPI.create(favorite);
-        console.log(data, 'this is favorite', data, "data variable")
-        setFavorites((favorites) => [data.favorite, ...favorites])
-    }
-
-
-    // const [error, setError] = useState()
-
-    // async function addFavorite(favoriteId){
-    //     try {
-    //       const data = await favoriteAPI.create(favoriteId)
-    //       console.log(data, ' <- the response from the server when we make a like');
-    //     } catch(err){
-    //       console.log(err)
-    //       setError(err.message)
-    //     }
-    //   }
-    
-    // async function removeFavorite(favoriteId){
-    //     try {
-    //       const data = await favoriteAPI.removeFavorite(favoriteId);
-    //       console.log(data, '<-  this is the response from the server when we remove a like')
-          
-    //     } catch(err){
-    //       console.log(err);
-    //       setError(err.message);
-    //     }
-    //   }
-
-    // const favoriteIndex = favorites.findIndex(
-    //     (favorite) => favorite.userId === user._id
-    // )
-
-    // const clickHandler =
-    //     favoriteIndex > -1
-    //     ? () => removeFavorite(favorites[favoriteIndex]._id)
-    //     : () => addFavorite(favorites._id)
-
-    // const favoriteColor = favoriteIndex > -1 ? 'yellow' : 'white'
     return (
         <>
         <Header />
@@ -79,8 +37,6 @@ function CountryPage({ countryPage, user }) {
                             </Segment>
                             <Icon 
                             name="star"
-                            // color={favoriteColor}
-                            onClick={handleClick} 
                             />
                         </Card.Content>
                     </Card>
