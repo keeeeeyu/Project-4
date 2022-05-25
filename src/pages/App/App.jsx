@@ -16,6 +16,7 @@ import NorthAmericaPage from "../NorthAmericaPage/NorthAmericaPage";
 import OceaniaPage from "../OceaniaPage/OceaniaPage";
 import SouthAmericaPage from "../SouthAmericaPage/SouthAmericaPage";
 import Detail from "../../components/Detail/Detail"
+import CountryPage from "../CountryPage/CountryPage";
 
 
 
@@ -32,8 +33,10 @@ function App() {
   const [southAmerica, setSouthAmerica] = useState("");
   const [oceania, setOceania] = useState("");
   const [countryName, setCountryName] = useState("");
-  
+  const [countryPage, setCountryPage] = useState();
 
+  
+  console.log(country,"<----- country")
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -71,7 +74,7 @@ function App() {
     countryApiCall()
   }, []) 
 
-  console.log(country.asia,"<----asia")
+  
 
   // Europe API call
   useEffect(() => {
@@ -164,10 +167,27 @@ function App() {
     countryApiCall()
   }, []) 
 
+  function handleClick(e) {
+    if(e.target.className === 'ui image Africa') {
+      setCountryPage(country.africa)
+    } else if(e.target.className === 'ui image Asia') {
+      setCountryPage(country.asia)
+    } else if(e.target.className === 'ui image Europe') {
+      setCountryPage(country.europe)
+    } else if(e.target.className === 'ui image North America') {
+      setCountryPage(country.northAmerica)
+    } else if(e.target.className === 'ui image South America') {
+      setCountryPage(country.southAmerica)
+    } else if(e.target.className === 'ui image Australia-Oceania') {
+      setCountryPage(country.oceania)
+    }
+  }
+  
+  
+  
   if (user) {
     return (
       <Routes>
-        <Route path="/covidTracker" element={<CovidTrackerPage user={user} handleLogout={handleLogout} continent={continent}/>} />
         <Route path="/africa" element={<AfricaPage africa={africa}/>} />
         <Route path="/asia" element={<AsiaPage asia={asia}/>} />
         <Route path="/europe" element={<EuropePage europe={europe}/>} />
@@ -177,7 +197,8 @@ function App() {
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/africa/:countryName" element={<Detail setCountryName={setCountryName}/>} />
-        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} />} />
+        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} handleClick={handleClick}/>} />
+        <Route path="/country/:countinentName" element={<CountryPage countryPage={countryPage}/>} />
       </Routes>
     );
   }

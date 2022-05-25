@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState,  } from 'react';
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 
 
-function ContinentPage({ user, handleLogout, continent }) {
+
+function ContinentPage({ user, handleLogout, continent, setCountryPage, country, handleClick }) {
+
 
 
 
@@ -16,8 +18,8 @@ function ContinentPage({ user, handleLogout, continent }) {
                 <Grid.Column>
                     <Card>
                         <Card.Content>
-                            <Link to={`/${continent?.continent}`}>
-                                <Image src={continent.continentImg}></Image>
+                            <Link onClick={handleClick} to={`/country/${continent.continent}`}>
+                                <Image className={continent.continent} src={continent.continentImg}></Image>
                             </Link>
                             <Segment>{continent?.continent}</Segment>
                             <Segment>
