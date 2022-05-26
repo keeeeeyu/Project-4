@@ -73,7 +73,7 @@ function App() {
         <Route path="/signup" element={<SignupPage 
         handleSignUpOrLogin={handleSignUpOrLogin} 
         />} />
-        <Route path="/country/:countryName/detail" element={<DetailPage />} />
+        <Route path="/country/:countryName/detail" element={<DetailPage user={user}/>} />
         <Route path="/continent" element={<ContinentPage user={user} 
         handleLogout={handleLogout} 
         continent={continent} 
@@ -92,7 +92,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
+      <Route path="/" element={<LandingPage user={user}/>} />
       <Route path="/login" element={<LoginPage 
       handleSignUpOrLogin={handleSignUpOrLogin} 
       />} />

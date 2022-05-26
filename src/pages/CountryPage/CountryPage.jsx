@@ -15,9 +15,9 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
 
     
 
-    async function addFavorite(favorite) {
+    async function addFavorite() {
         
-        const data = await favoriteAPI.create(favorite);
+        const data = await favoriteAPI.create();
 
         setFavorites([data.favorite, ...favorites])
     }
@@ -66,7 +66,7 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
 
     return (
         <>
-    <Header />
+    <Header user={user}/>
     <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country, index)=> (
