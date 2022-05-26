@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import * as favoriteAPI from '../../utils/favoriteApi'
 import { useState, useEffect } from "react";
 import mappingService from "../../utils/mappingService";
+import CountryPostCard from "../../components/CountryPostCard/CountryPostCard";
 
 
 function CountryPage({ user, country, countryPage , setCountryPage, setCountry}) {    
@@ -33,17 +34,6 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
         }
     }
 
-    const favoriteIdx = favorites.findIndex(
-        (favorite) => favorite.userId === user._id
-    );
-
-    const clickHandler =
-        favoriteIdx > -1
-        ? () => removeFavorite(favorites[favoriteIdx]._id)
-        : () => addFavorite(favorites._id)    
-
-    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
-    
 
 
 //     useEffect(()=>{
@@ -71,30 +61,12 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country, index)=> (
                 <Grid.Column key={index}>
-                    <Card key={favorites._id} >
-                        <Card.Content>
-                            <Segment>
-                                <Link to={`/country/${country.country}/detail`}>
-                                    <Image src={country?.countryInfo.flag}></Image>
-                                </Link>
-                            </Segment>
-                        </Card.Content>
-                        <Card.Content>
-                            <Segment>{country?.country}</Segment>
-                            <Segment>
-                                Total Cases: {country?.cases}<br/>
-                                Active: {country?.active}<br/>
-                                Recovered: {country?.recovred}<br/>
-                                Deaths: {country?.deaths}<br/>
-                                Today Cases: {country?.todayCases}<br/>
-                                Today Deaths: {country?.todayDeaths}<br/>
-                                Population: {country?.population}
-                            </Segment>
-                            <Card.Content>
-                            <Icon name="star" color={favoriteColor} onClick={clickHandler} />
-                            </Card.Content>
-                        </Card.Content>
-                    </Card>
+                    <CountryPostCard 
+                    removeFavorite={removeFavorite} 
+                    addFavorite={addFavorite} 
+                    favorites={favorites}
+                    user={user}
+                    />
                 </Grid.Column>
             ))}</Grid.Row>
             </Grid>
