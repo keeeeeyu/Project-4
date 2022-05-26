@@ -12,9 +12,10 @@ function signup(user) {
       headers: new Headers({ "Content-Type": "application/json" }),
       body: JSON.stringify(user),
     })
-      .then((res) => {
+      .then((res, err) => {
         if (res.ok) return res.json();
-        console.log(Error)
+        console.log(err,"<----- err")
+        console.log(Error,"<----- err")
         // Probably a duplicate email
         throw new Error("Email already taken!");
         
