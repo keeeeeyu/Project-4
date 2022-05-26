@@ -24,8 +24,7 @@ function CountryPage({ countryPage, user }) {
     async function removeFavorite(favoriteId) {
         try {
             const data = await favoriteAPI.deleteFavorite(favoriteId)
-            setFavorites([])
-            console.log(data," this is the data from the server removefav")
+            setFavorites([data])
         } catch(err){
 
             setError(err.message)
@@ -41,28 +40,16 @@ function CountryPage({ countryPage, user }) {
         ? () => removeFavorite(favorites[favoriteIdx]._id)
         : () => addFavorite(favorites._id)    
 
-
-    console.log(favoriteIdx)
-    console.log(favorites)
-
-    
-
-
-
     const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
 
     return (
         <>
-        <Header />
-        <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
-                            name="star"
-                            color={favoriteColor}
-                            onClick={clickHandler} 
-                            /></Segment>
+    <Header />
+    <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
         <Grid textAlign='center' columns={3}>
-            <Grid.Row>{Array.from(countryPage).map((country)=> (
-                <Grid.Column>
-                    <Card>
+            <Grid.Row>{Array.from(countryPage).map((country, index)=> (
+                <Grid.Column key={index}>
+                    <Card key={favorites._id} >
                         <Card.Content>
 
                             <Segment>
@@ -80,7 +67,7 @@ function CountryPage({ countryPage, user }) {
                                 Today Deaths: {country?.todayDeaths}<br/>
                                 Population: {country?.population}
                             </Segment>
-
+                            <Icon name="star" color={favoriteColor} onClick={clickHandler} />
                         </Card.Content>
                     </Card>
                 </Grid.Column>

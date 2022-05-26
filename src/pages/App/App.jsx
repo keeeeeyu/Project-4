@@ -22,9 +22,9 @@ function App() {
   const [continent, setContinent] = useState("");
   const [country, setCountry] = useState("");
   const [countryPage, setCountryPage] = useState("");
-  const [favorites, setFavorites] = useState("")
   const [error, setError] = useState("");
 
+  console.log(country,"<------")
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -68,11 +68,24 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-        <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path="/login" element={<LoginPage 
+        handleSignUpOrLogin={handleSignUpOrLogin} 
+        />} />
+        <Route path="/signup" element={<SignupPage 
+        handleSignUpOrLogin={handleSignUpOrLogin} 
+        />} />
         <Route path="/country/:countryName/detail" element={<DetailPage />} />
-        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} setCountryPage={setCountryPage} country={country}/>} />
-        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} favorites={favorites} setCountryPage={setCountryPage}/>} />
+        <Route path="/continent" element={<ContinentPage user={user} 
+        handleLogout={handleLogout} 
+        continent={continent} 
+        setCountryPage={setCountryPage} 
+        country={country}
+        />} />
+        <Route path="/country/:continentName" element={<CountryPage 
+        countryPage={countryPage} 
+        user={user} 
+        setCountryPage={setCountryPage} 
+        />} />
       </Routes>
     );
   }
@@ -80,8 +93,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-      <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+      <Route path="/login" element={<LoginPage 
+      handleSignUpOrLogin={handleSignUpOrLogin} 
+      />} />
+      <Route path="/signup" element={<SignupPage 
+      handleSignUpOrLogin={handleSignUpOrLogin} 
+      />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
