@@ -14,7 +14,7 @@ export function create(){
     })
 }
 
-export function removeFavorite(favoriteId) {
+export function deleteFavorite(favoriteId) {
     return fetch(`${BASE_URL}/${favoriteId}`, {
         method: 'DELETE',
         headers: {

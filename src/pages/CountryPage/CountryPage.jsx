@@ -23,8 +23,9 @@ function CountryPage({ countryPage, user }) {
 
     async function removeFavorite(favoriteId) {
         try {
-            const data = await favoriteAPI.removeFavorite(favoriteId)
-
+            const data = await favoriteAPI.deleteFavorite(favoriteId)
+            setFavorites([])
+            console.log(data," this is the data from the server removefav")
         } catch(err){
 
             setError(err.message)
@@ -35,17 +36,14 @@ function CountryPage({ countryPage, user }) {
         (favorite) => favorite.userId === user._id
     );
 
-    function clickHandler(e) {
-        
-    }
-
-    // const clickHandler =
-    //     favoriteIdx > -1
-    //     ? () => removeFavorite(favorites[favoriteIdx]._id)
-    //     : () => addFavorite(favorites._id)    
+    const clickHandler =
+        favoriteIdx > -1
+        ? () => removeFavorite(favorites[favoriteIdx]._id)
+        : () => addFavorite(favorites._id)    
 
 
-
+    console.log(favoriteIdx)
+    console.log(favorites)
 
     
 
@@ -56,13 +54,17 @@ function CountryPage({ countryPage, user }) {
     return (
         <>
         <Header />
-        <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
+        <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
+                            name="star"
+                            color={favoriteColor}
+                            onClick={clickHandler} 
+                            /></Segment>
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country)=> (
                 <Grid.Column>
                     <Card>
                         <Card.Content>
-                        
+
                             <Segment>
                                 <Link to={`/country/${country.country}/detail`}>
                                     <Image src={country?.countryInfo.flag}></Image>
@@ -78,11 +80,7 @@ function CountryPage({ countryPage, user }) {
                                 Today Deaths: {country?.todayDeaths}<br/>
                                 Population: {country?.population}
                             </Segment>
-                            <Icon 
-                            name="star"
-                            color={favoriteColor}
-                            onClick={clickHandler} 
-                            />
+
                         </Card.Content>
                     </Card>
                 </Grid.Column>
