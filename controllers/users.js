@@ -24,6 +24,7 @@ function signup(req, res) {
     res.json({ token });
   } catch (err) {
     // Probably a duplicate email
+    console.log(err,"<--- err from controllers")
     res.status(400).json(err);
   }
 };
