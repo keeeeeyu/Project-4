@@ -24,7 +24,6 @@ function App() {
   const [countryPage, setCountryPage] = useState("");
   const [error, setError] = useState("");
 
-  console.log(country,"<------")
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -85,6 +84,7 @@ function App() {
         countryPage={countryPage} 
         user={user} 
         setCountryPage={setCountryPage} 
+        setCountry={setCountry} 
         />} />
       </Routes>
     );

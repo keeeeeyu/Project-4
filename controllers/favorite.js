@@ -1,4 +1,4 @@
-const Favorite = require('../models/favorite');
+const User = require('../models/user');
 
 module.exports = {
     create,

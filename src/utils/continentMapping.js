@@ -14,17 +14,17 @@ const continentImg = {
 function mapContinent(continents) {
     const newContinent = Array.from(continents).map((continent) => {
         if(continent.continent === 'North America') {
-            continent = ({...continent, continentImg: continentImg.naImg})
+            continent = ({...continent, continentImg: continentImg.naImg, continentParam: "northAmerica"})
         } else if(continent.continent === 'Asia') {
-            continent = ({...continent, continentImg: continentImg.asImg})
+            continent = ({...continent, continentImg: continentImg.asImg, continentParam: "asia"})
         } else if(continent.continent === 'South America') {
-            continent = ({...continent, continentImg: continentImg.saImg})
+            continent = ({...continent, continentImg: continentImg.saImg, continentParam: "southAmerica"})
         } else if(continent.continent === 'Europe') {
-            continent = ({...continent, continentImg: continentImg.euImg})
+            continent = ({...continent, continentImg: continentImg.euImg, continentParam: "europe"})
         } else if(continent.continent === 'Australia-Oceania') {
-            continent = ({...continent, continentImg: continentImg.ocImg})
+            continent = ({...continent, continentImg: continentImg.ocImg, continentParam: "oceania"})
         } else if(continent.continent === 'Africa') {
-            continent = ({...continent, continentImg: continentImg.afImg})
+            continent = ({...continent, continentImg: continentImg.afImg, continentParam: "africa"})
         }
         return continent
     })

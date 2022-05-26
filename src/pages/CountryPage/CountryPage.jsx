@@ -1,17 +1,19 @@
 
-import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
+import { Card, CardContent, Grid, Icon, Image, Segment } from "semantic-ui-react";
 import { Link, useParams } from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import * as favoriteAPI from '../../utils/favoriteApi'
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import mappingService from "../../utils/mappingService";
 
 
-function CountryPage({ countryPage, user }) {    
+function CountryPage({ user, country, countryPage , setCountryPage, setCountry}) {    
     const { continentName } = useParams()
-
+    // const [countryPage, setCountryPage] = useState("");
     const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState('')
 
+    
 
     async function addFavorite(favorite) {
         
@@ -41,6 +43,26 @@ function CountryPage({ countryPage, user }) {
         : () => addFavorite(favorites._id)    
 
     const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
+    
+
+
+//     useEffect(()=>{
+//     if(continentName === 'Asia'){
+//         setCountryPage(country.asia)
+//     } else if(continentName === 'Africa') {
+//         setCountryPage(country.africa)
+//     } else if(continentName === 'Europe') {
+//         setCountryPage(country.europe)
+//     } else if(continentName === 'North America') {
+//         setCountryPage(country.northAmerica)
+//     } else if(continentName === 'South America') {
+//         setCountryPage(country.southAmerica)
+//     } else if(continentName === 'Australia-Oceania') {
+//         setCountryPage(country.oceania)
+//     }
+// },[])
+
+    // console.log(countryPage)
 
     return (
         <>
@@ -51,12 +73,13 @@ function CountryPage({ countryPage, user }) {
                 <Grid.Column key={index}>
                     <Card key={favorites._id} >
                         <Card.Content>
-
                             <Segment>
                                 <Link to={`/country/${country.country}/detail`}>
                                     <Image src={country?.countryInfo.flag}></Image>
                                 </Link>
                             </Segment>
+                        </Card.Content>
+                        <Card.Content>
                             <Segment>{country?.country}</Segment>
                             <Segment>
                                 Total Cases: {country?.cases}<br/>
@@ -67,12 +90,15 @@ function CountryPage({ countryPage, user }) {
                                 Today Deaths: {country?.todayDeaths}<br/>
                                 Population: {country?.population}
                             </Segment>
+                            <Card.Content>
                             <Icon name="star" color={favoriteColor} onClick={clickHandler} />
+                            </Card.Content>
                         </Card.Content>
                     </Card>
                 </Grid.Column>
             ))}</Grid.Row>
-        </Grid>
+            </Grid>
+
         </>
     )
 }

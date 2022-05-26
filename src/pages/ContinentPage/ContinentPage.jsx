@@ -5,25 +5,24 @@ import Header from '../../components/Header/Header';
 
 
 
-function ContinentPage({ user, handleLogout, continent }) {
+function ContinentPage({ user, handleLogout, continent, setCountryPage, country }) {
     
-    // , setCountryPage, country
-    // function handleClick(e) {
-    //     if(e.target.className === 'ui image Africa') {
-    //       setCountryPage(country.africa)
-    //     } else if(e.target.className === 'ui image Asia') {
-    //       setCountryPage(country.asia)
-    //     } else if(e.target.className === 'ui image Europe') {
-    //       setCountryPage(country.europe)
-    //     } else if(e.target.className === 'ui image North America') {
-    //       setCountryPage(country.northAmerica)
-    //     } else if(e.target.className === 'ui image South America') {
-    //       setCountryPage(country.southAmerica)
-    //     } else if(e.target.className === 'ui image Australia-Oceania') {
-    //       setCountryPage(country.oceania)
-    //     }
-    //   }
-    console.log(continent)
+    
+    function handleClick(e) {
+        if(e.target.className === 'ui image Africa') {
+          setCountryPage(country.africa)
+        } else if(e.target.className === 'ui image Asia') {
+          setCountryPage(country.asia)
+        } else if(e.target.className === 'ui image Europe') {
+          setCountryPage(country.europe)
+        } else if(e.target.className === 'ui image North America') {
+          setCountryPage(country.northAmerica)
+        } else if(e.target.className === 'ui image South America') {
+          setCountryPage(country.southAmerica)
+        } else if(e.target.className === 'ui image Australia-Oceania') {
+          setCountryPage(country.oceania)
+        }
+      }
     return (
         <>
         <Header user={user} handleLogout={handleLogout}/>
@@ -33,7 +32,7 @@ function ContinentPage({ user, handleLogout, continent }) {
                 <Grid.Column key={index}>
                     <Card>
                         <Card.Content>
-                            <Link to={`/country/${continent.continent}`}>
+                            <Link onClick={handleClick} to={`/country/${continent.continent}`}>
                                 <Image className={continent.continent} src={continent.continentImg}></Image>
                             </Link>
                             <Segment>{continent?.continent}</Segment>
