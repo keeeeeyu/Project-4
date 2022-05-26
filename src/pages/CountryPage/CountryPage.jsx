@@ -7,28 +7,28 @@ import * as favoriteAPI from '../../utils/favoriteApi'
 import { useState } from "react";
 
 
-function CountryPage({ countryPage, user }) {    
 
+function CountryPage({ countryPage, user, setCountryPage }) {    
+    const { continentName } = useParams()
 
     const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState('')
 
 
-
     async function addFavorite(favorite) {
         
         const data = await favoriteAPI.create(favorite);
-        console.log(data, 'this is add favorite data')
+
         setFavorites([data.favorite, ...favorites])
     }
-    console.log(favorites,"<--------favorites")
+
 
     async function removeFavorite(favoriteId) {
         try {
             const data = await favoriteAPI.removeFavorite(favoriteId)
-            console.log(data,'<----- this is remove favorite')
+
         } catch(err){
-            console.log(err)
+
             setError(err.message)
         }
     }
@@ -36,25 +36,43 @@ function CountryPage({ countryPage, user }) {
     const favoriteIdx = favorites.findIndex(
         (favorite) => favorite.userId === user._id
     );
-    console.log(favoriteIdx)
+
     const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
 
-    const clickHandler = 
-        favoriteIdx > -1
-        ? () => removeFavorite(favorites[favoriteIdx]._id)
-        : () => addFavorite(favorites._id)    
+    function clickHandler(e) {
+        
+    }
+
+    // const clickHandler =
+    //     favoriteIdx > -1
+    //     ? () => removeFavorite(favorites[favoriteIdx]._id)
+    //     : () => addFavorite(favorites._id)    
+
+
+
+
+    
+
+
 
 
 
     return (
         <>
         <Header />
-        <CountryPostCard countryPage={countryPage} favoriteColor={favoriteColor} clickHandler={clickHandler}/>
-        <Icon 
-                            name="star"
-                            color={favoriteColor}
-                            onClick={clickHandler} 
-                            />
+        <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
+        <Grid textAlign='center' columns={3}>
+            <Grid.Row>{Array.from(countryPage).sort((x, y)=>(
+                 (x.favorited > y.favorited) ? -1 : 1
+            )).map((country)=> {
+                return (
+                <Grid.Column>
+                    <Card>
+                        <CountryPostCard country={country} setCountryPage={setCountryPage} favoriteColor={favoriteColor} favorites={favorites}/>
+                    </Card>
+                </Grid.Column>
+            )})}</Grid.Row>
+        </Grid>
         </>
     )
 }

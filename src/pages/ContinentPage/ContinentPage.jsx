@@ -1,15 +1,30 @@
-import { useState,  } from 'react';
+import React, { useState,  } from 'react';
 import { Card, Grid, Image, Segment } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 
 
 
-function ContinentPage({ user, handleLogout, continent, handleClick }) {
-    
+function ContinentPage({ user, handleLogout, continent, setCountryPage, country }) {
+    function handleClick(e) {
+        if(e.target.className === 'ui image Africa') {
+          setCountryPage(country.africa)
+        } else if(e.target.className === 'ui image Asia') {
+          setCountryPage(country.asia)
+        } else if(e.target.className === 'ui image Europe') {
+          setCountryPage(country.europe)
+        } else if(e.target.className === 'ui image North America') {
+          setCountryPage(country.northAmerica)
+        } else if(e.target.className === 'ui image South America') {
+          setCountryPage(country.southAmerica)
+        } else if(e.target.className === 'ui image Australia-Oceania') {
+          setCountryPage(country.oceania)
+        }
+      }
     return (
         <>
         <Header user={user} handleLogout={handleLogout}/>
+        
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(continent).map((continent) => (
                 <Grid.Column>
@@ -33,6 +48,7 @@ function ContinentPage({ user, handleLogout, continent, handleClick }) {
                 </Grid.Column>
             ))}</Grid.Row>
         </Grid>
+        
         </>
     )
 }

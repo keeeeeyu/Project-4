@@ -62,21 +62,7 @@ function App() {
     countryApiCall()
   }, []) 
 
-  function handleClick(e) {
-    if(e.target.className === 'ui image Africa') {
-      setCountryPage(country.africa)
-    } else if(e.target.className === 'ui image Asia') {
-      setCountryPage(country.asia)
-    } else if(e.target.className === 'ui image Europe') {
-      setCountryPage(country.europe)
-    } else if(e.target.className === 'ui image North America') {
-      setCountryPage(country.northAmerica)
-    } else if(e.target.className === 'ui image South America') {
-      setCountryPage(country.southAmerica)
-    } else if(e.target.className === 'ui image Australia-Oceania') {
-      setCountryPage(country.oceania)
-    }
-  }
+
   
 
   if (user) {
@@ -85,8 +71,8 @@ function App() {
         <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
         <Route path="/country/:countryName/detail" element={<DetailPage />} />
-        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} handleClick={handleClick}/>} />
-        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} favorites={favorites}/>} />
+        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} setCountryPage={setCountryPage} country={country}/>} />
+        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} favorites={favorites} setCountryPage={setCountryPage}/>} />
       </Routes>
     );
   }

@@ -9,6 +9,8 @@ function mappedCountry(country) {
         };
 
     Array.from(country).map(countries => {
+        countries = {...countries, favorited: -1}
+
         if(countries.continent === 'Europe') {
             mappedContinent.europe.push(countries)
         } else if (countries.continent === 'Asia') {
