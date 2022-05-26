@@ -1,6 +1,6 @@
 import tokenService from "./tokenService";
 
-const BASE_URL = '/api/favorites'
+const BASE_URL = '/api/favorite'
 
 export function create(){
     return fetch(`${BASE_URL}`, {

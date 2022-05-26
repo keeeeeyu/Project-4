@@ -21,18 +21,14 @@ async function create(req, res){
 
 async function deleteFavorite(req, res){
     try {
-        console.log(req.params,"params")
+        
         const favorite = await Favorite.findOne({_id: req.params.id, username: req.user.username});
-        console.log(favorite,"<------favvv")
-        Favorite.remove(favorite) // mutating a document
+        favorite.remove(req.params.id) // mutating a document
 		console.log(favorite, " <-= favorite in delete!")
         // req.params.id is the like id 
         await favorite.save() // after you mutate a document you must save
-        
-        res.json({favorite: favorite})
+        res.json({data: 'like removed'})
     } catch(err){
-        console.log(err)
         res.status(400).json({err})
     }
-    
 }
