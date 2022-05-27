@@ -6,7 +6,7 @@ import * as favoriteAPI from '../../utils/favoriteApi'
 import { useState } from "react";
 
 
-function CountryPage({ countryPage, user }) {    
+function CountryPage({ countryPage, user, handleLogout }) {    
     const { continentName } = useParams()
 
     const [favorites, setFavorites] = useState([]);
@@ -53,7 +53,7 @@ function CountryPage({ countryPage, user }) {
 
     return (
         <>
-        <Header />
+        <Header user={user} handleLogout={handleLogout}/>
         <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
                             name="star"
                             color={favoriteColor}
