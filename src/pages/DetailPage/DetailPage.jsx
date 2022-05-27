@@ -25,7 +25,7 @@ function CountryDetail(user, handleLogout) {
         <Header user={user} handleLogout={handleLogout}/>
         <Segment textAlign='center'><h1>{countryName}</h1></Segment>
         <Container>
-            <Card>
+            <Card centered>
             <Image src={detail?.countryInfo?.flag}/>
             </Card>
             <Segment textAlign='center'>
