@@ -1,38 +1,30 @@
-## Setup 
+# Covid Tracker  
+Covid Tracker is social media web application that's hosted on Heroku where you can keep track of covid cases around the world.
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+- components - Contains all reusable components.
+- pages - Contains all the front-end pages.
+- utils - Contains all the api
 
+## Features  
+- Users can find statistics of covid around the world.
+- Users can leave favorite if the resource was useful.
+- Users can search any countries.
 
-#### Setup your git repo
+## ERD  
+![alt text](https://i.imgur.com/GYMQyO8.png)
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2. Then you can run the following commands in the root of your project 
+# Wireframe  
+![alt text](https://i.imgur.com/dBi6rKL.png)
+![alt text](https://i.imgur.com/WtSMt4m.png)
+![alt text](https://i.imgur.com/aMtY4jn.png)
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be, look at the address in the code github gives you!
-git push -u origin main
-```
+## Technologies Used:
+MongoDb | Express | React | Nodejs | Semantic-ui React | NovelCOVID API
 
-#### Setup the App
+## Getting Started:  
+- Deployment: https://covid19v-tracker.herokuapp.com/
 
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
-# Project-4
+Icebox:
+- Implement mapAPI
+- Implement graphs for covid datas
+- Favorite button to each card
