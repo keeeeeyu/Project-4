@@ -21,9 +21,9 @@ function App() {
   const [continent, setContinent] = useState("");
   const [country, setCountry] = useState("");
   const [countryPage, setCountryPage] = useState("");
-  const [favorites, setFavorites] = useState("")
   const [error, setError] = useState("");
 
+  console.log(country,"<------")
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -72,14 +72,18 @@ function App() {
         <Route path="/country/:countryName/detail" element={<DetailPage user={user} handleLogout={handleLogout}/>} />
         <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} setCountryPage={setCountryPage} country={country}/>} />
         <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} favorites={favorites} setCountryPage={setCountryPage} handleLogout={handleLogout}/>} />
+
       </Routes>
     );
   }
 
   return (
     <Routes>
+
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+
+
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
