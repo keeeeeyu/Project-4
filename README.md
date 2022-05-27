@@ -23,7 +23,7 @@ MongoDb | Express | React | Nodejs | Semantic-ui React | NovelCOVID API
 
 ## Getting Started:  
 - Deployment: https://covid19v-tracker.herokuapp.com/
-
+- Trello: https://trello.com/b/vak7Nk5P/project-4
 Icebox:
 - Implement mapAPI
 - Implement graphs for covid datas
