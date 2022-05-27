@@ -10,7 +10,7 @@ import userService from "../../utils/userService";
 import IconPostCard from "../../components/IconPostCard";
 
 
-function CountryPage({ user, country, countryPage , setCountryPage, setCountry}) {    
+function CountryPage({ countryPage, user, handleLogout }) {    
     const { continentName } = useParams()
     // const [countryPage, setCountryPage] = useState("");
     // const [favorites, setFavorites] = useState([]);
@@ -75,11 +75,12 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
 
     return (
         <>
-    <Header user={user}/>
-    <Segment>
-        <IconPostCard country={country} user={user}/>
-    </Segment>
-    <Segment textAlign="center"><h1>{ continentName }</h1></Segment>
+        <Header user={user} handleLogout={handleLogout}/>
+        <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
+                            name="star"
+                            color={favoriteColor}
+                            onClick={clickHandler} 
+                            /></Segment>
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country, index)=> (
                 <Grid.Column key={index}>

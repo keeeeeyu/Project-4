@@ -6,8 +6,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import continentMapping from "../../utils/continentMapping";
 import mappingService from "../../utils/mappingService";
-import * as favoriteAPI from "../../utils/favoriteApi";
-import LandingPage from "../LandingPage/LandingPage";
+// import * as favoriteAPI from "../../utils/favoriteApi";
 import ContinentPage from "../ContinentPage/ContinentPage"
 import CountryPage from "../CountryPage/CountryPage";
 import DetailPage from "../DetailPage/DetailPage"
@@ -67,38 +66,19 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/login" element={<LoginPage 
-        handleSignUpOrLogin={handleSignUpOrLogin} 
-        />} />
-        <Route path="/signup" element={<SignupPage 
-        handleSignUpOrLogin={handleSignUpOrLogin} 
-        />} />
-        <Route path="/country/:countryName/detail" element={<DetailPage user={user}/>} />
-        <Route path="/continent" element={<ContinentPage user={user} 
-        handleLogout={handleLogout} 
-        continent={continent} 
-        setCountryPage={setCountryPage} 
-        country={country}
-        />} />
-        <Route path="/country/:continentName" element={<CountryPage 
-        countryPage={countryPage} 
-        user={user} 
-        setCountryPage={setCountryPage} 
-        setCountry={setCountry} 
-        />} />
+        <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+        <Route path="/country/:countryName/detail" element={<DetailPage user={user} handleLogout={handleLogout}/>} />
+        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} setCountryPage={setCountryPage} country={country}/>} />
+        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} setCountryPage={setCountryPage} handleLogout={handleLogout}/>} />
       </Routes>
     );
   }
 
   return (
     <Routes>
-      <Route path="/" element={<LandingPage user={user}/>} />
-      <Route path="/login" element={<LoginPage 
-      handleSignUpOrLogin={handleSignUpOrLogin} 
-      />} />
-      <Route path="/signup" element={<SignupPage 
-      handleSignUpOrLogin={handleSignUpOrLogin} 
-      />} />
+      <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+      <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );

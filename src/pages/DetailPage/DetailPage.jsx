@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Segment, Image, Card } from 'semantic-ui-react'
 import Header from "../../components/Header/Header";
 
-function CountryDetail({user}) {
+function CountryDetail(user, handleLogout) {
     const [detail, setDetail] = useState("");
     const { countryName } = useParams();
 
@@ -22,7 +22,7 @@ function CountryDetail({user}) {
 
     return (
         <>
-        <Header user={user}/>
+        <Header user={user} handleLogout={handleLogout}/>
         <Segment textAlign='center'><h1>{countryName}</h1></Segment>
         <Container>
             <Card>
