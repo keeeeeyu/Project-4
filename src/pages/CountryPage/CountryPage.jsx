@@ -1,19 +1,17 @@
 
-import { Card, CardContent, Grid, Icon, Image, Segment } from "semantic-ui-react";
+import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
 import { Link, useParams } from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import * as favoriteAPI from '../../utils/favoriteApi'
-import { useState, useEffect } from "react";
-import mappingService from "../../utils/mappingService";
+import { useState } from "react";
 
 
-function CountryPage({ user, country, countryPage ,handleLogout, setCountryPage, setCountry}) {    
+function CountryPage({ countryPage, user, handleLogout }) {    
     const { continentName } = useParams()
-    // const [countryPage, setCountryPage] = useState("");
+
     const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState('')
 
-    
 
     async function addFavorite(favorite) {
         
@@ -26,7 +24,8 @@ function CountryPage({ user, country, countryPage ,handleLogout, setCountryPage,
     async function removeFavorite(favoriteId) {
         try {
             const data = await favoriteAPI.deleteFavorite(favoriteId)
-            setFavorites([data])
+            setFavorites([])
+            console.log(data," this is the data from the server removefav")
         } catch(err){
 
             setError(err.message)
@@ -42,51 +41,35 @@ function CountryPage({ user, country, countryPage ,handleLogout, setCountryPage,
         ? () => removeFavorite(favorites[favoriteIdx]._id)
         : () => addFavorite(favorites._id)    
 
-    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
+
+    console.log(favoriteIdx)
+    console.log(favorites)
+
     
 
 
-//     useEffect(()=>{
-//     if(continentName === 'Asia'){
-//         setCountryPage(country.asia)
-//     } else if(continentName === 'Africa') {
-//         setCountryPage(country.africa)
-//     } else if(continentName === 'Europe') {
-//         setCountryPage(country.europe)
-//     } else if(continentName === 'North America') {
-//         setCountryPage(country.northAmerica)
-//     } else if(continentName === 'South America') {
-//         setCountryPage(country.southAmerica)
-//     } else if(continentName === 'Australia-Oceania') {
-//         setCountryPage(country.oceania)
-//     }
-// },[])
 
-    // console.log(countryPage)
+    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
 
     return (
         <>
-
         <Header user={user} handleLogout={handleLogout}/>
-        <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
+        <Segment textAlign="center"><h1>{ continentName }</h1><Icon 
                             name="star"
                             color={favoriteColor}
                             onClick={clickHandler} 
                             /></Segment>
-
-
         <Grid textAlign='center' columns={3}>
-            <Grid.Row>{Array.from(countryPage).map((country, index)=> (
-                <Grid.Column key={index}>
-                    <Card key={favorites._id} >
+            <Grid.Row>{Array.from(countryPage).map((country)=> (
+                <Grid.Column>
+                    <Card>
                         <Card.Content>
+
                             <Segment>
                                 <Link to={`/country/${country.country}/detail`}>
                                     <Image src={country?.countryInfo.flag}></Image>
                                 </Link>
                             </Segment>
-                        </Card.Content>
-                        <Card.Content>
                             <Segment>{country?.country}</Segment>
                             <Segment>
                                 Total Cases: {country?.cases}<br/>
@@ -97,15 +80,12 @@ function CountryPage({ user, country, countryPage ,handleLogout, setCountryPage,
                                 Today Deaths: {country?.todayDeaths}<br/>
                                 Population: {country?.population}
                             </Segment>
-                            <Card.Content>
-                            <Icon name="star" color={favoriteColor} onClick={clickHandler} />
-                            </Card.Content>
+
                         </Card.Content>
                     </Card>
                 </Grid.Column>
             ))}</Grid.Row>
-            </Grid>
-
+        </Grid>
         </>
     )
 }
