@@ -3,17 +3,11 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
-const favoriteSchema = mongoose.Schema({
-  country: String
-});
-
-
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, lowercase: true, unique: true },
     email: { type: String, required: true, lowercase: true, unique: true },
     password: String,
-    favorites: [favoriteSchema]
   },
   {
     timestamps: true,
@@ -65,3 +59,4 @@ userSchema.methods.comparePassword = function (tryPassword, cb) {
 };
 
 module.exports = mongoose.model("User", userSchema);
+
