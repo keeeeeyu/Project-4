@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Header, Segment, Form } from "semantic-ui-react";
 
-function PageHeader({ handleLogout, user }) {
+function PageHeader({ handleLogout }) {
   const navigate = useNavigate()
   const [input, setInput] = useState({
     search: ''
@@ -18,8 +18,7 @@ function PageHeader({ handleLogout, user }) {
     navigate(`/country/${input.search}/detail`) 
   }
 
-  if(user) {
-    return (
+  return (
     <Segment clearing>
         <Header as="h2" floated="left">
         <Link to="/continent">
@@ -39,27 +38,6 @@ function PageHeader({ handleLogout, user }) {
 
     </Segment>
   );
-  }
-  return (
-    <Segment clearing>
-    <Header as="h2" floated="left">
-    <Link to="/continent">
-      CovidTracker
-    </Link>
-    </Header>
-    <Header as="h2" floated="right">
-    <Link to="/login" >
-      Login
-    </Link>
-  </Header>
-    <Header floated="right">
-    <Form onSubmit={handleSubmit}>
-    <Form.Input icon placeholder='Search Country...' value={input.search} onChange={handleSearchChange}/>
-    </Form>
-    </Header>
-
-</Segment>
-  )
 }
 
 export default PageHeader
