@@ -1,25 +1,43 @@
 import { Card, Grid, Icon, Image, Segment } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import { useState, useEffect} from 'react'
+import userService from "../../utils/userService";
+
+function CountryPostCard({ country, removeFavorite, addFavorite, favorites, user, setFavorites}) {
+    // const data = userService.getUser();
+    // // setFavorites([...data.users])
+    // console.log(data.user)
 
 
-function CountryPostCard({ country, removeFavorite, addFavorite, favorites, user}) {
-    
 
-    const favoriteIdx = favorites.findIndex(
-        (favorite) => favorite.country === user._id
-    );
 
-    const clickHandler =
-        favoriteIdx > -1
-        ? () => removeFavorite(favorites[favoriteIdx]._id)
-        : () => addFavorite(country?.country)    
+
+    // const favoriteIdx = favorites.findIndex(
+    //     (favorite) => favorite?.country === user._id
+    // );
+
+    // const clickHandler =
+    //     favoriteIdx > -1
+    //     ? () => removeFavorite(favorites[favoriteIdx]._id)
+    //     : () => addFavorite(country?.country)    
 
     // const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
     
+    // async function getUsers() {
+    //     try {
+    //         const data = await userService.getUser();
+    //         setFavorites([...data.users])
+    //         console.log(data.user,"<---- from post card")
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
+    // }
+    
+    // useEffect(() => {
+    //     getUsers();
+    // }, []);
 
     
-
     return (
         <>
         <Card>
@@ -40,11 +58,11 @@ function CountryPostCard({ country, removeFavorite, addFavorite, favorites, user
                             Today Deaths: {country?.todayDeaths}<br/>
                             Population: {country?.population}
                         </Segment>
-                        <Icon 
+                        {/* <Icon 
                         name="star"
-                        // color={favoriteColor}
+                        color={favoriteColor}
                         onClick={clickHandler}
-                        />
+                        /> */}
                     </Card.Content>
                     </Card>
         </>
