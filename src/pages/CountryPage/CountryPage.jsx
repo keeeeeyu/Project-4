@@ -16,10 +16,12 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
 
     
 
-    async function addFavorite() {
-        
-        const data = await favoriteAPI.create();
-
+    async function addFavorite(countryName) {
+        // const formData = new FormData()
+        // formData.append("country", countryName)
+        const countryObj = {"country": countryName}
+        const data = await favoriteAPI.create(countryObj);
+        console.log(data)
         setFavorites([data.favorite, ...favorites])
     }
 
@@ -66,6 +68,7 @@ function CountryPage({ user, country, countryPage , setCountryPage, setCountry})
                     addFavorite={addFavorite} 
                     favorites={favorites}
                     user={user}
+                    country={country}
                     />
                 </Grid.Column>
             ))}</Grid.Row>

@@ -5,16 +5,17 @@ import { useState, useEffect} from 'react'
 
 function CountryPostCard({ country, removeFavorite, addFavorite, favorites, user}) {
     
+
     const favoriteIdx = favorites.findIndex(
-        (favorite) => favorite.userId === user._id
+        (favorite) => favorite.country === user._id
     );
 
     const clickHandler =
         favoriteIdx > -1
         ? () => removeFavorite(favorites[favoriteIdx]._id)
-        : () => addFavorite(favorites._id)    
+        : () => addFavorite(country?.country)    
 
-    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
+    // const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
     
 
     
@@ -41,7 +42,7 @@ function CountryPostCard({ country, removeFavorite, addFavorite, favorites, user
                         </Segment>
                         <Icon 
                         name="star"
-                        color={favoriteColor}
+                        // color={favoriteColor}
                         onClick={clickHandler}
                         />
                     </Card.Content>

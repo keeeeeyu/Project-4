@@ -5,4 +5,6 @@ const favoriteCtrl = require('../../controllers/favorite')
 router.post('/', favoriteCtrl.create)
 router.delete('/:id', favoriteCtrl.deleteFavorite)
 
+
+
 module.exports = router;
