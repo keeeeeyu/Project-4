@@ -66,19 +66,37 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-        <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
-        <Route path="/country/:countryName/detail" element={<DetailPage user={user} handleLogout={handleLogout}/>} />
-        <Route path="/continent" element={<ContinentPage user={user} handleLogout={handleLogout} continent={continent} setCountryPage={setCountryPage} country={country}/>} />
-        <Route path="/country/:continentName" element={<CountryPage countryPage={countryPage} user={user} setCountryPage={setCountryPage} handleLogout={handleLogout}/>} />
+        <Route path="/login" element={<LoginPage 
+        handleSignUpOrLogin={handleSignUpOrLogin} 
+        />} />
+        <Route path="/signup" element={<SignupPage 
+        handleSignUpOrLogin={handleSignUpOrLogin} 
+        />} />
+        <Route path="/country/:countryName/detail" element={<DetailPage />} />
+        <Route path="/continent" element={<ContinentPage user={user} 
+        handleLogout={handleLogout} 
+        continent={continent} 
+        setCountryPage={setCountryPage} 
+        country={country}
+        />} />
+        <Route path="/country/:continentName" element={<CountryPage 
+        countryPage={countryPage} 
+        user={user} 
+        setCountryPage={setCountryPage} 
+        setCountry={setCountry} 
+        handleLogout={handleLogout}
+        />} />
       </Routes>
     );
   }
 
   return (
     <Routes>
+
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
       <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />} />
+
+
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );

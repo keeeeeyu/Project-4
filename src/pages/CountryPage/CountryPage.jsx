@@ -5,54 +5,45 @@ import Header from "../../components/Header/Header";
 import * as favoriteAPI from '../../utils/favoriteApi'
 import { useState, useEffect } from "react";
 import mappingService from "../../utils/mappingService";
-import CountryPostCard from "../../components/CountryPostCard/CountryPostCard";
-import userService from "../../utils/userService";
-import IconPostCard from "../../components/IconPostCard";
 
 
-function CountryPage({ countryPage, user, handleLogout }) {    
+function CountryPage({ user, country, countryPage ,handleLogout, setCountryPage, setCountry}) {    
     const { continentName } = useParams()
     // const [countryPage, setCountryPage] = useState("");
-    // const [favorites, setFavorites] = useState([]);
-    // const [error, setError] = useState('')
+    const [favorites, setFavorites] = useState([]);
+    const [error, setError] = useState('')
 
-
-    // console.log(user)
     
-    // async function addFavorite(countryName) {
-    //     // const formData = new FormData()
-    //     // formData.append("country", countryName)
-    //     const countryObj = {"country": countryName}
-    //     const data = await favoriteAPI.create(countryObj);
-    //     console.log(data)
-    //     setFavorites([data.favorite, ...favorites])
-    // }
+
+    async function addFavorite(favorite) {
+        
+        const data = await favoriteAPI.create(favorite);
+
+        setFavorites([data.favorite, ...favorites])
+    }
 
 
-    // async function removeFavorite(favoriteId) {
-    //     try {
-    //         const data = await favoriteAPI.deleteFavorite(favoriteId)
-    //         setFavorites([data])
-    //     } catch(err){
+    async function removeFavorite(favoriteId) {
+        try {
+            const data = await favoriteAPI.deleteFavorite(favoriteId)
+            setFavorites([data])
+        } catch(err){
 
-    //         setError(err.message)
-    //     }
-    // }
+            setError(err.message)
+        }
+    }
 
+    const favoriteIdx = favorites.findIndex(
+        (favorite) => favorite.userId === user._id
+    );
 
-    // async function getUsers() {
-    //     try {
-    //         const data = await userService.getUser();
-    //         setFavorites([...data.users])
-    //         console.log(data.user,'<------ from country page')
-    //     } catch (err) {
-    //         setError(err.message)
-    //     }
-    // }
+    const clickHandler =
+        favoriteIdx > -1
+        ? () => removeFavorite(favorites[favoriteIdx]._id)
+        : () => addFavorite(favorites._id)    
+
+    const favoriteColor = favoriteIdx > -1 ? "yellow" : "grey";
     
-    // useEffect(() => {
-    //     getUsers();
-    // }, []);
 
 
 //     useEffect(()=>{
@@ -75,21 +66,42 @@ function CountryPage({ countryPage, user, handleLogout }) {
 
     return (
         <>
+
         <Header user={user} handleLogout={handleLogout}/>
         <Segment textAlign="center"><h1>{ continentName }</h1>                        <Icon 
                             name="star"
                             color={favoriteColor}
                             onClick={clickHandler} 
                             /></Segment>
+
+
         <Grid textAlign='center' columns={3}>
             <Grid.Row>{Array.from(countryPage).map((country, index)=> (
                 <Grid.Column key={index}>
-                    <CountryPostCard 
-                    // removeFavorite={removeFavorite} 
-                    // addFavorite={addFavorite} 
-                    user={user}
-                    country={country}
-                    />
+                    <Card key={favorites._id} >
+                        <Card.Content>
+                            <Segment>
+                                <Link to={`/country/${country.country}/detail`}>
+                                    <Image src={country?.countryInfo.flag}></Image>
+                                </Link>
+                            </Segment>
+                        </Card.Content>
+                        <Card.Content>
+                            <Segment>{country?.country}</Segment>
+                            <Segment>
+                                Total Cases: {country?.cases}<br/>
+                                Active: {country?.active}<br/>
+                                Recovered: {country?.recovred}<br/>
+                                Deaths: {country?.deaths}<br/>
+                                Today Cases: {country?.todayCases}<br/>
+                                Today Deaths: {country?.todayDeaths}<br/>
+                                Population: {country?.population}
+                            </Segment>
+                            <Card.Content>
+                            <Icon name="star" color={favoriteColor} onClick={clickHandler} />
+                            </Card.Content>
+                        </Card.Content>
+                    </Card>
                 </Grid.Column>
             ))}</Grid.Row>
             </Grid>
