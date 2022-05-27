@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const Favorite = require('../models/favorite');
 
 module.exports = {
     create,
@@ -6,17 +6,14 @@ module.exports = {
 }
 
 async function create(req, res){
-    console.log(req.body)
+    
     try {
-        
-		const user = await User.findById( req.user )
-        user.favorites.push(req.body)
-        await user.save()
-        console.log(user)
-        res.status(201).json({user: user})
+		const favorite = await Favorite.create({username: req.user.username, userId: req.user._id})
+        await favorite.save()// save it
+        console.log(favorite,"<------ fav")
+        res.status(201).json({favorite: favorite})
     } catch(err){
-        console.log('catch')
-       console.log(err)
+       
         res.status(400).json({err})
     }
     
@@ -24,10 +21,13 @@ async function create(req, res){
 
 async function deleteFavorite(req, res){
     try {
-        const user = await User.findOne(req.user);
-        User.remove(req.body)
-        await user.save()
-        res.json({user: 'delete in ctrl'})
+        console.log(req.params.id)
+        const favorite = await Favorite.findOne({"_id": req.params.id, "username": req.user.username});
+        Favorite.remove(req.params.id) // mutating a document
+		console.log(req.params.id, " <-= favorite in delete!")
+        // req.params.id is the like id 
+        await favorite.save() // after you mutate a document you must save
+        res.json({favorite: favorite})
     } catch(err){
         res.status(400).json({err})
     }
